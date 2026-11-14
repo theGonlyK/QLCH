@@ -30,7 +30,7 @@
 - **Các hạng mục công việc giai đoạn Khởi tạo (Cổng Brief) trên `theGonlyK/QLCH`:**
   - `#1` (`[QLCH-INIT-01][PM]` — `Done / CLOSED`): Khởi tạo dự án `QLCH`, Git repo `theGonlyK/QLCH`, GitHub Project `QLCH` và đội ngũ Agent chuyên trách.
   - `#2` (`[QLCH-BA-01][BA][P0]` — `Todo / OPEN`): Làm rõ yêu cầu với Chủ dự án & hoàn thiện hồ sơ Cổng Brief (`PROJECT_BRIEF.md`, `REQUIREMENTS.md`, `GLOSSARY.md`).
-  - `#3` (`[QLCH-MKT-01][Marketing]` — `Todo / OPEN`): Nghiên cứu thị trường phần mềm quản lý chuỗi cửa hàng/POS và thu thập bộ biểu mẫu nghiệp vụ bán lẻ.
+  - `#3` (`[QLCH-MKT-01][Marketing]` — `Done / CLOSED`): Đã hoàn thành khảo sát thị trường 5 phần mềm quản lý cửa hàng/POS (`KiotViet`, `Sapo POS`, `Haravan HaraRetail`, `PosApp`, `Odoo POS`) và tuyển chọn bộ 07 biểu mẫu hóa đơn POS, bàn giao ca, nhập/xuất/điều chuyển/kiểm kê kho chuẩn Việt Nam (`2.Tai_lieu_tham_khao/5.Tai_lieu_marketing/BAO_CAO_KHAO_SAT_PHAN_MEM_POS_VA_CHUOI_CUA_HANG_VN.md`, `2.Tai_lieu_tham_khao/3.Tai_lieu_nghiep_vu/DANH_MUC_VA_MA_TRAN_PHAN_MEM_POS_CHUOI_BAN_LE_VN.md`, `2.Tai_lieu_tham_khao/3.Tai_lieu_nghiep_vu/BO_BIEU_MAU_HOA_DON_POS_VA_XUAT_NHAP_KIEM_KHO_VN.md`, `02-nghiep-vu/NGHIEN_CUU_THI_TRUONG_VA_BIEU_MAU_THAM_KHAO.md`, `SO_DANG_KY_TRI_THUC.md`).
   - `#4` (`[QLCH-TECH-01][Tech]` — `Todo / OPEN`): Đánh giá phương án kiến trúc kỹ thuật & lập `TECH_PROFILE.md` sau khi chốt phạm vi Brief.
   - `#5` (`[QLCH-UX-01][UX]` — `Todo / OPEN`): Phác thảo luồng trải nghiệm người dùng cốt lõi theo vai trò cửa hàng.
   - `#6` (`[QLCH-QA-01][QA]` — `Todo / OPEN`): Thiết lập khung kiểm thử, đối soát tồn kho/doanh thu và tiêu chuẩn chất lượng (`QUALITY_AND_RELEASE.md`).
