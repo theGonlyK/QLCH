@@ -42,4 +42,16 @@
 
 ---
 
+## 4. Thuật ngữ Hàng Đặc thù: Chất gây cháy nổ, Vật liệu nổ & Pháo (`REF-MKT-005`)
+
+| Thuật ngữ | Định nghĩa trong phạm vi dự án | Nguồn/người xác nhận | Ghi chú / Giai đoạn |
+| :--- | :--- | :--- | :--- |
+| **Định mức Tồn chứa Thuốc nổ Quy đổi (`NEQ / NEW — Net Explosive Quantity`)** | Tổng khối lượng thuốc nổ/thuốc pháo thực tế quy đổi (tính bằng `kg` hoặc `tấn`) của toàn bộ sản phẩm đang lưu trữ trong một Kho hoặc Buồng kho (`Zone`). Hệ thống `WMS` bắt buộc khóa chặn nhập kho (`Hard Lock`) nếu tổng `NEQ` vượt định mức trên Giấy chứng nhận `ANTT/PCCC`. | **Đã chốt** (`REF-MKT-005` — `QCVN 01:2019/BCT`) | `P1 MVP` (`UC-WMS-01, 04`) |
+| **Mã số Liên Hợp Quốc & Nhóm Nguy hiểm (`UN Number & Hazard Division`)** | Mã định danh quốc tế 4 chữ số (ví dụ: `UN 0336` cho Pháo hoa `1.4G`, `UN 1942` cho Amoni Nitrat) và phân nhóm nguy hiểm cháy nổ (Loại 1: Chất nổ; Loại 2, 3, 4: Khí/Lỏng/Rắn dễ cháy) theo Nghị định `34/2024/NĐ-CP`. | **Đã chốt** (`REF-MKT-005` — NĐ `34/2024/NĐ-CP`) | `P1 MVP` (`UC-WMS-02`) & `P2` (`TMS`) |
+| **Phân khu Cách ly Hàng Kỵ nhau (`Incompatible Storage Separation`)** | Quy tắc bắt buộc trong `WMS` và `TMS`: Nghiêm cấm xếp chung hoặc chở chung **Kíp nổ / Phụ kiện nổ** với **Thuốc nổ**, hoặc **Tiền chất Amoni Nitrat ($NH_4NO_3$)** với dầu mỡ, axít, kim loại kiềm (`QCVN 01:2019/BCT`). | **Đã chốt** (`REF-MKT-005` — `QCVN 01:2019/BCT`) | `P1 MVP` (`UC-WMS-04`) & `P2` (`UC-TMS-02`) |
+| **Pháo hoa Tiêu dùng (`Z121 Consumer Fireworks`) vs Pháo nổ** | **Pháo hoa tiêu dùng** (do Nhà máy `Z121` — Bộ Quốc phòng độc quyền sản xuất) chỉ tạo hiệu ứng ánh sáng/màu sắc/âm thanh không gây tiếng nổ, được phép bán lẻ dân sự kèm định danh **`CCCD 12 số`** người mua. **Pháo nổ / Pháo hoa nổ** gây tiếng nổ bị nghiêm cấm mua bán dân sự (Nghị định `137/2020/NĐ-CP`). | **Đã chốt** (`REF-MKT-005` — NĐ `137/2020/NĐ-CP`) | `P1 MVP` (`WMS`) & `P2` (`UC-POS-03`) |
+| **Giấy phép Vận chuyển Hàng Nguy hiểm / Pháo hoa (`Transport Permit C06/PC07`)** | Giấy phép do Cục `C06` hoặc Phòng `C07/PC07` Công an cấp cho từng chuyến vận chuyển hàng cháy nổ/pháo hoa (thời hạn hiệu lực $\le 07\text{ ngày}$, bắt buộc nộp trả lại cơ quan Công an trong vòng `07 ngày` sau khi hoàn tất chuyến hàng). | **Đã chốt** (`REF-MKT-005` — NĐ `137/2020` & `34/2024`) | `P1 MVP` (`UC-WMS-03, 06`) & `P2` (`UC-TMS-02, 03`) |
+
+---
+
 Thuật ngữ riêng dự án ở đây không tự động trở thành tri thức dùng chung.

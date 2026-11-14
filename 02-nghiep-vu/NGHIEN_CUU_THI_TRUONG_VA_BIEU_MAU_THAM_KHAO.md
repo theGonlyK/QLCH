@@ -26,12 +26,13 @@
      - `BM-KHO-03`: Phiếu Điều chuyển kho liên chi nhánh 2 bước (`In-Transit Stock Transfer`).
      - `BM-KHO-04`: Biên bản Kiểm kê hàng hóa & Cân bằng kho (`Mẫu số 05-VT` — TT133 & TT200/TT-BTC).
 4. **Sổ đăng ký tri thức đề xuất đồng bộ:** [`SO_DANG_KY_TRI_THUC.md`](../SO_DANG_KY_TRI_THUC.md).
+5. **Danh sách & Đặc tả Kịch bản Ca sử dụng (`Use Cases`) đã xây dựng từ bộ tài liệu Marketing & Quyết định `QLCH-D002`:** [`02-nghiep-vu/USE_CASES.md`](USE_CASES.md) (gồm 08 Use Cases `P1 — WMS` và 05 Use Cases `P2 — POS & TMS`).
 
 ---
 
 ## 2. Bảng Ánh xạ Kết quả Khảo sát vào 05 Câu hỏi Cổng Brief (`02-nghiep-vu/REQUIREMENTS.md`)
 
-> **Lưu ý quan trọng (`RULES_CORE.md`):** Bảng dưới đây cung cấp góc nhìn tham chiếu thị trường để hỗ trợ `BA Lead`, `UX Lead`, `Tech Lead` và Chủ dự án khi chốt Cổng Brief; mọi quyết định phạm vi vẫn ở trạng thái **`Cần xác nhận`** bởi Chủ dự án.
+> **Trạng thái cập nhật (`2026-11-14`):** Chủ dự án đã chính thức xác nhận toàn bộ 5 câu hỏi tại Quyết định [`QLCH-D002`](../01-quan-ly/DECISIONS.md) và [`02-nghiep-vu/REQUIREMENTS.md`](REQUIREMENTS.md). Bộ biểu mẫu `BM-KHO-01..04` và `BM-POS-01..03` đã được ánh xạ trực tiếp thành danh sách Use Cases tại [`02-nghiep-vu/USE_CASES.md`](USE_CASES.md).
 
 | Mã câu hỏi Cổng Brief | Câu hỏi tại `REQUIREMENTS.md` | Bằng chứng Thị trường & Điểm cần lưu ý từ `QLCH-MKT-01` |
 | :---: | :--- | :--- |
