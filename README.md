@@ -37,8 +37,10 @@ Trước khi dùng bộ khung này, đọc rule chuẩn tại `3.DOC_AI/quan-tri
 - `01-quan-ly/DECISIONS.md`: sổ quyết định dự án (`QLCH-D001`...) và người chốt.
 - `01-quan-ly/DOI_NGU_AGENT_VA_CO_CHE_PHOI_HOP.md`: danh sách đội ngũ Agent theo dõi dự án `QLCH`, phân quyền 3 mảng và quy tắc điều phối task.
 - `02-nghiep-vu/REQUIREMENTS.md`: yêu cầu, quy tắc nghiệp vụ và danh sách câu hỏi cần Chủ dự án xác nhận.
-- `02-nghiep-vu/GLOSSARY.md`: thuật ngữ nghiệp vụ trong phạm vi hệ thống cửa hàng.
+- `02-nghiep-vu/USE_CASES.md`: đặc tả 16 kịch bản ca sử dụng (`P1 WMS` & `P2 POS+TMS`, bao gồm hàng đặc thù cháy nổ/VLNCN/pháo hoa `Z121`).
+- `02-nghiep-vu/GLOSSARY.md`: thuật ngữ nghiệp vụ trong phạm vi hệ thống cửa hàng & kho bãi.
 - `03-ky-thuat/TECH_PROFILE.md`: kiến trúc, công nghệ, tích hợp và môi trường.
+- `03-ky-thuat/DATABASE_SCHEMA.md`: thiết kế cơ sở dữ liệu, sơ đồ ERD, cấu trúc 7 nhóm bảng (`PostgreSQL` & `IndexedDB Offline`), 5 bất biến dữ liệu (`INV-DB-01..05`) và chiến lược indexing/migration.
 - `04-van-hanh/QUALITY_AND_RELEASE.md`: chất lượng, kiểm thử, phát hành và vận hành.
 - `04-van-hanh/IMPROVEMENTS.md`: nhật ký cải tiến rút ra sau mỗi vòng đời/sprint.
 
