@@ -29,18 +29,21 @@
   - Giữ ranh giới dữ liệu và Git hoàn toàn tách biệt với dự án `QLNT`.
 - **Các hạng mục công việc giai đoạn Khởi tạo (Cổng Brief) trên `theGonlyK/QLCH`:**
   - `#1` (`[QLCH-INIT-01][PM]` — `Done / CLOSED`): Khởi tạo dự án `QLCH`, Git repo `theGonlyK/QLCH`, GitHub Project `QLCH` và đội ngũ Agent chuyên trách.
-  - `#2` (`[QLCH-BA-01][BA][P0]` — `Todo / OPEN`): Làm rõ yêu cầu với Chủ dự án & hoàn thiện hồ sơ Cổng Brief (`PROJECT_BRIEF.md`, `REQUIREMENTS.md`, `GLOSSARY.md`).
+  - `#2` (`[QLCH-BA-01][BA][P0]` — `Done / CLOSED`): Đã làm rõ và ghi nhận đầy đủ `Q-QLCH-01..Q-QLCH-05` từ Chủ dự án vào `DECISIONS.md` (`QLCH-D002`), chuẩn hóa hoàn chỉnh `PROJECT_BRIEF.md`, `REQUIREMENTS.md` và `GLOSSARY.md` sẵn sàng qua **Cổng Brief**.
   - `#3` (`[QLCH-MKT-01][Marketing]` — `Done / CLOSED`): Đã hoàn thành khảo sát thị trường 5 phần mềm quản lý cửa hàng/POS (`KiotViet`, `Sapo POS`, `Haravan HaraRetail`, `PosApp`, `Odoo POS`) và tuyển chọn bộ 07 biểu mẫu hóa đơn POS, bàn giao ca, nhập/xuất/điều chuyển/kiểm kê kho chuẩn Việt Nam (`2.Tai_lieu_tham_khao/5.Tai_lieu_marketing/BAO_CAO_KHAO_SAT_PHAN_MEM_POS_VA_CHUOI_CUA_HANG_VN.md`, `2.Tai_lieu_tham_khao/3.Tai_lieu_nghiep_vu/DANH_MUC_VA_MA_TRAN_PHAN_MEM_POS_CHUOI_BAN_LE_VN.md`, `2.Tai_lieu_tham_khao/3.Tai_lieu_nghiep_vu/BO_BIEU_MAU_HOA_DON_POS_VA_XUAT_NHAP_KIEM_KHO_VN.md`, `02-nghiep-vu/NGHIEN_CUU_THI_TRUONG_VA_BIEU_MAU_THAM_KHAO.md`, `SO_DANG_KY_TRI_THUC.md`).
-  - `#4` (`[QLCH-TECH-01][Tech]` — `Todo / OPEN`): Đánh giá phương án kiến trúc kỹ thuật & lập `TECH_PROFILE.md` sau khi chốt phạm vi Brief.
-  - `#5` (`[QLCH-UX-01][UX]` — `Todo / OPEN`): Phác thảo luồng trải nghiệm người dùng cốt lõi theo vai trò cửa hàng.
-  - `#6` (`[QLCH-QA-01][QA]` — `Todo / OPEN`): Thiết lập khung kiểm thử, đối soát tồn kho/doanh thu và tiêu chuẩn chất lượng (`QUALITY_AND_RELEASE.md`).
+  - `#4` (`[QLCH-TECH-01][Tech]` — `Todo / OPEN` — **Đã mở khóa đầu vào từ `#2`**): Đánh giá phương án kiến trúc kỹ thuật & lập `TECH_PROFILE.md` theo phạm vi Brief đã chốt (`P1: WMS + Sơ đồ 2D + Offline-first + $0/Local-first`; `P2: POS + TMS`).
+  - `#5` (`[QLCH-UX-01][UX]` — `Todo / OPEN` — **Đã mở khóa đầu vào từ `#2`**): Phác thảo luồng trải nghiệm người dùng cốt lõi & sơ đồ trực quan 2D kho bãi (`P1 WMS`) / cửa hàng & giao vận (`P2`).
+  - `#6` (`[QLCH-QA-01][QA]` — `Todo / OPEN` — **Đã mở khóa đầu vào từ `#2`**): Thiết lập khung kiểm thử, đối soát tồn kho/doanh thu và tiêu chuẩn chất lượng (`QUALITY_AND_RELEASE.md`).
 
 ---
 
-## 3. Điểm đang chờ Chủ dự án xác nhận để qua Cổng Brief
+## 3. Tóm tắt Quyết định Cổng Brief đã chốt (`QLCH-D002` — `2026-11-14`)
 
-Chi tiết câu hỏi nằm tại `02-nghiep-vu/REQUIREMENTS.md` (Mục *"Câu hỏi cần làm rõ"*), bao gồm:
-1. **Ngành hàng & Mô hình chuỗi cửa hàng:** Bán lẻ tổng hợp/tạp hóa, thời trang, F&B, dược phẩm hay đa ngành? Mô hình 1 chủ nhiều chi nhánh hay nền tảng SaaS cho nhiều chủ thương hiệu?
-2. **Phạm vi nghiệp vụ cốt lõi (P1 MVP):** Quản lý danh mục hàng hóa/SKU/mã vạch, Bán hàng tại quầy (POS) & in hóa đơn, Quản lý tồn kho đa chi nhánh (nhập - xuất - điều chuyển - kiểm kê), Quản lý nhân viên/ca làm việc, Quản lý khách hàng/tích điểm, hay Báo cáo tài chính/lãi lỗ?
-3. **Loại hình Client & Định hướng trải nghiệm:** Web App, POS Desktop/Tablet, Mobile App? Giao diện chuẩn nghiệp vụ hiện đại (ERP/POS tốc độ cao) hay có kết hợp không gian trực quan 2D/3D/Gamification?
-4. **Ràng buộc Hạ tầng, Chi phí & Thư viện:** Có áp dụng nguyên tắc **`$0 First`** và **`Local Library-First` (chưa kết nối bên thứ 3 khi chưa có confirm của Chủ dự án)** tương tự dự án `QLNT` hay không?
+Chủ dự án đã xác nhận toàn bộ 5 câu hỏi `Q-QLCH-01..Q-QLCH-05` (chi tiết tại `01-quan-ly/DECISIONS.md`, `01-quan-ly/PROJECT_BRIEF.md` và `02-nghiep-vu/REQUIREMENTS.md`):
+1. **Mô hình hệ sinh thái & Sở hữu (`Q-QLCH-01`):** Quản lý hợp nhất **Bán lẻ (`POS`) - Kho bãi (`WMS`) - Vận chuyển (`TMS`)** cho **Đa ngành hàng tiêu dùng/bán lẻ** (SKU, mã vạch, đa đơn vị tính, lô/HSD) theo mô hình **1 chủ sở hữu quản lý toàn chuỗi (`Single-owner Multi-branch & Multi-warehouse`)**.
+2. **Chiến lược phân kỳ P1 & P2 (`Q-QLCH-02`):**
+   - **Giai đoạn 1 (`P1 MVP` — Trọng tâm hiện tại):** Chỉ làm trước **Hệ thống Quản lý Kho bãi (`WMS`)** (Kho tổng `Hub/DC` & kho chi nhánh, vị trí `Zone/Rack/Bin`, nhập kho NCC, xuất kho, điều chuyển liên kho `In-Transit`, kiểm kê, cảnh báo tồn tối thiểu & báo cáo NXT/Thẻ kho).
+   - **Giai đoạn 2 (`P2`):** Mở rộng **Hệ thống Bán lẻ (`POS`)** và **Hệ thống Vận chuyển (`TMS`)** kết nối khép kín trên nền tảng `WMS` của `P1`.
+3. **Loại hình Client & Trải nghiệm (`Q-QLCH-03`):** **Web App tốc độ cao** (Responsive cho PC, Tablet/POS, Mobile Web) **kết hợp Sơ đồ trực quan 2D** (P1: Sơ đồ 2D layout vị trí kệ/bin kho bãi; P2: Sơ đồ quầy cửa hàng & bản đồ theo dõi tuyến vận chuyển). Kích hoạt vai trò `2D Visual Artist`.
+4. **Ràng buộc Vận hành, Thiết bị & Hạ tầng (`Q-QLCH-04`):** Hỗ trợ **Offline-first** (vùng sóng yếu trong kho/quầy/xe giao hàng); tích hợp **Máy quét mã vạch/QR** & **Máy in nhiệt**; tuân thủ nghiêm ngặt nguyên tắc **`$0 First`** và **`100% Thư viện cục bộ (Local Library-First)`** (chưa gọi API bên thứ 3 khi chưa có confirm của Chủ dự án).
+5. **Thị trường & KPI (`Q-QLCH-05`):** Thị trường Việt Nam; KPI P1 (`WMS`) khớp tồn kho 100% theo `Bin` & `Lô/HSD`, quét mã `< 1s`, truy vết 100% chứng từ; KPI Toàn trình (`P1+P2`) khép kín luồng *Nhập kho $\rightarrow$ Điều chuyển/Vận chuyển $\rightarrow$ Bán lẻ POS/Giao khách*, khớp tồn kho & COD 100%, lên đơn POS `< 15s/đơn`.
