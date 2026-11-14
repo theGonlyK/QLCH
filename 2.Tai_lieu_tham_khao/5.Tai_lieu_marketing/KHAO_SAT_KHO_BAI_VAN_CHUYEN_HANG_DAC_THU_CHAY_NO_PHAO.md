@@ -61,34 +61,40 @@ flowchart TD
 
 ---
 
-## 3. Ma trận Quy định Đăng ký, Giấy phép, Giấy Chứng nhận (GCN) & Chứng chỉ (CC) Bắt buộc
+## 3. Ma trận Quy định Đăng ký, Giấy phép, Giấy Chứng nhận (GCN) & Chứng chỉ (CC) Bắt buộc (Phạm vi Thương mại - Kho bãi - Vận chuyển)
 
-Để vận hành hợp pháp mô hình kinh doanh, kho bãi và vận chuyển các sản phẩm đặc thù này, doanh nghiệp bắt buộc phải hoàn tất chuỗi giấy phép sau:
+> [!IMPORTANT]
+> **Xác định ranh giới phạm vi nghiệp vụ (Scope Boundaries):**
+> Theo yêu cầu của Chủ dự án, hệ thống phần mềm phục vụ **hoạt động Thương mại phân phối, Bán lẻ (POS), Vận hành lưu kho (WMS) và Vận chuyển hàng nguy hiểm (TMS)**, **HOÀN TOÀN KHÔNG CÓ KHÂU SẢN XUẤT HAY DỊCH VỤ THI CÔNG NỔ MÌN**.
+> Do đó, danh mục pháp lý dưới đây đã được chuẩn hóa và loại bỏ:
+> 1. *Loại bỏ Giấy phép sản xuất pháo hoa / VLNCN* (chỉ giữ lại Giấy phép kinh doanh thương mại và văn bản chấp thuận điểm bán lẻ).
+> 2. *Loại bỏ Giấy phép sử dụng VLNCN / Chứng chỉ thợ nổ mìn / Chỉ huy nổ mìn* (vì thuộc khâu khai thác mỏ/thi công công trình nổ mìn của khách hàng, không thuộc phạm vi doanh nghiệp thương mại).
+> 
+> Chuỗi pháp lý chuẩn mực gồm **16 loại Giấy phép, Giấy Chứng nhận và Chứng chỉ chuyên ngành** như sau:
 
 | STT | Tên Giấy phép / GCN / Chứng chỉ | Căn cứ pháp lý | Cơ quan có thẩm quyền cấp | Đối tượng / Khâu áp dụng | Thời hạn hiệu lực |
 | :---: | :--- | :--- | :--- | :--- | :--- |
 | **I** | **NHÓM GIẤY PHÉP DOANH NGHIỆP & ĐIỀU KIỆN AN NINH TRẬT TỰ** | | | | |
-| 1 | **Giấy chứng nhận đăng ký doanh nghiệp** | Luật Doanh nghiệp 2020 | Sở Kế hoạch và Đầu tư tỉnh/thành phố | Doanh nghiệp kinh doanh ngành nghề có điều kiện | Vô thời hạn (theo hoạt động DN) |
-| 2 | **Giấy chứng nhận đủ điều kiện về An ninh, Trật tự (ANTT)** | Nghị định `96/2016/NĐ-CP` & NĐ `56/2023/NĐ-CP` | • **Cục C06 - Bộ Công an** (Cơ sở SX, kinh doanh VLNCN, sản xuất/XNK pháo hoa)<br>• **Phòng PC06 Công an tỉnh** (Kho bảo quản, điểm bán lẻ pháo hoa, vận chuyển VLNCN) | Toàn bộ trụ sở, kho bãi, cơ sở kinh doanh, điểm bán | Thường không thời hạn (trừ trường hợp giấy phép chuyên ngành có thời hạn thì cấp theo thời hạn giấy phép) |
-| 3 | **Phương án bảo đảm An ninh, Trật tự cơ sở** | Điều 8 Nghị định `96/2016/NĐ-CP` | Doanh nghiệp lập, gửi kèm hồ sơ cấp Giấy phép ANTT | Kho bãi, phương tiện vận chuyển, điểm kinh doanh | Định kỳ rà soát hoặc khi có thay đổi |
-| **II** | **NHÓM GIẤY PHÉP PHÒNG CHÁY, CHỮA CHÁY & BẢO VỆ MÔI TRƯỜNG** | | | | |
-| 4 | **Giấy chứng nhận thẩm duyệt thiết kế về PCCC** | NĐ `136/2020/NĐ-CP` & NĐ `50/2024/NĐ-CP` | Cục C07 hoặc Phòng PC07 Công an cấp tỉnh | Trước khi khởi công xây dựng/cải tạo kho bãi, cửa hàng | Theo công trình thiết kế |
-| 5 | **Văn bản chấp thuận kết quả nghiệm thu về PCCC** | Điều 15 NĐ `136/2020/NĐ-CP` & NĐ `50/2024/NĐ-CP` | Cục C07 hoặc Phòng PC07 Công an cấp tỉnh | Bắt buộc trước khi đưa kho bãi, cửa hàng vào sử dụng | Theo niên hạn công trình |
-| 6 | **Giấy phép môi trường / Đăng ký môi trường** | Luật Bảo vệ môi trường 2020 | Bộ TN&MT hoặc UBND tỉnh/huyện | Kho hóa chất, kho vật liệu nổ, nhà máy sản xuất | `05 – 10 năm` tùy quy mô dự án |
-| **III** | **NHÓM GIẤY PHÉP CHUYÊN NGÀNH VẬT LIỆU NỔ & PHÁO HOA** | | | | |
-| 7 | **Giấy phép sản xuất / kinh doanh Pháo hoa** | Điều 14 Nghị định `137/2020/NĐ-CP` | Bộ Quốc phòng (chỉ cấp cho tổ chức, DN thuộc BQP) | Doanh nghiệp sản xuất, hệ thống chi nhánh Z121 | Theo quyết định thành lập / giấy phép |
-| 8 | **Văn bản chấp thuận địa điểm Cửa hàng bán lẻ pháo hoa** | NĐ `137/2020/NĐ-CP` & quy định BQP / Công an | Công an tỉnh/thành phố và Công ty Hóa chất 21 (Z121) phê duyệt | Từng địa điểm mở cửa hàng bán lẻ pháo hoa | Cấp theo từng năm / từng địa điểm |
-| 9 | **Giấy phép sản xuất / kinh doanh / sử dụng VLNCN** | Luật `42/2024/QH15` (Điều 37, 41) | Bộ Công Thương (Cục ATMT) hoặc UBND cấp tỉnh (Sở Công Thương) | Doanh nghiệp sản xuất, kinh doanh, dịch vụ nổ mìn | `05 năm` (hoặc theo thời hạn dự án khai thác) |
-| 10 | **Giấy chứng nhận đủ điều kiện bảo quản VLNCN / Tiền chất thuốc nổ** | QCVN `01:2019/BCT` & Thông tư `32/2019/TT-BCT` | Sở Công Thương cấp tỉnh chủ trì kiểm tra liên ngành | Từng nhà kho chứa VLNCN độc lập | Theo thời hạn kiểm định kỹ thuật kho |
-| **IV** | **NHÓM GIẤY PHÉP VẬN CHUYỂN HÀNG NGUY HIỂM CHÁY NỔ** | | | | |
-| 11 | **Giấy phép vận chuyển Pháo hoa** | Điều 16 Nghị định `137/2020/NĐ-CP` | **Cục Cảnh sát QLHC về TTXH (C06 - Bộ Công an)** | Từng chuyến hàng vận chuyển pháo hoa từ kho tổng về cửa hàng | **Chỉ có giá trị cho 01 lượt**, thời hạn $\le 07$ ngày |
-| 12 | **Giấy phép vận chuyển Hàng hóa nguy hiểm Loại 1 (Chất nổ)** | Nghị định `34/2024/NĐ-CP` (Điều 17, 18) | **Bộ Công an (Cục C07 hoặc Phòng PC07 Công an tỉnh)**; BQP đối với xe quân sự | Phương tiện chuyên chở vật liệu nổ, pháo, chất nổ | Cấp theo từng chuyến hoặc thời hạn (tối đa $\le 24$ tháng) |
-| 13 | **Giấy chứng nhận kiểm định ATKT & BVMT xe chở hàng nguy hiểm** | Nghị định `34/2024/NĐ-CP` & NĐ `136/2020/NĐ-CP` | Cục Đăng kiểm VN & Cơ quan Cảnh sát PCCC kiểm tra | Phương tiện xe cơ giới chuyên dụng (bồn, thùng kín) | `06 – 12 tháng` theo chu kỳ đăng kiểm |
-| **V** | **NHÓM CHỨNG NHẬN, CHỨNG CHỈ (CC) HUẤN LUYỆN CON NGƯỜI** | | | | |
-| 14 | **Chứng nhận huấn luyện nghiệp vụ PCCC & CNCH** | Nghị định `136/2020/NĐ-CP` (Điều 33) | Phòng PC07 hoặc Công an cấp quận/huyện | Thủ kho, nhân viên bán hàng, bảo vệ, lái xe, người áp tải | `05 năm` |
-| 15 | **Giấy chứng nhận huấn luyện kỹ thuật an toàn VLNCN / Tiền chất thuốc nổ** | Thông tư `32/2019/TT-BCT` & QCVN `01:2019/BCT` | Sở Công Thương cấp tỉnh hoặc tổ chức được chỉ định | Người quản lý, thủ kho, người bốc dỡ, phục vụ | `02 năm` |
-| 16 | **Giấy chứng nhận tập huấn an toàn vận chuyển hàng nguy hiểm** | Nghị định `34/2024/NĐ-CP` (Điều 11) | Cơ quan chức năng hoặc đơn vị đào tạo được ủy quyền | Lái xe chuyên dụng và người áp tải hàng nguy hiểm | `02 năm` |
-| 17 | **Chứng chỉ thợ nổ mìn / Chỉ huy nổ mìn** *(nếu có)* | Luật `42/2024/QH15` | Trường đào tạo chuyên ngành mỏ - địa chất / quân sự | Cán bộ kỹ thuật nổ mìn, công nhân bắn mìn | Theo quy định chuyên ngành |
+| 1 | **Giấy chứng nhận đăng ký doanh nghiệp** | Luật Doanh nghiệp 2020 | Sở Kế hoạch và Đầu tư tỉnh/thành phố | Doanh nghiệp phân phối, kinh doanh thương mại, dịch vụ kho bãi & vận tải hàng nguy hiểm | Vô thời hạn (theo hoạt động DN) |
+| 2 | **Giấy chứng nhận đủ điều kiện về An ninh, Trật tự (ANTT)** | Nghị định `96/2016/NĐ-CP` & NĐ `56/2023/NĐ-CP` | • **Cục C06 - Bộ Công an** (Doanh nghiệp kinh doanh VLNCN, kinh doanh tiền chất thuốc nổ; đầu mối phân phối pháo hoa)<br>• **Phòng PC06 Công an tỉnh** (Kho bảo quản thương mại, Chi nhánh kinh doanh, Cửa hàng bán lẻ pháo hoa Z121) | Toàn bộ trụ sở thương mại, hệ thống kho bãi lưu trữ, điểm bán lẻ | Thường không thời hạn (hoặc cấp theo thời hạn của giấy phép kinh doanh chuyên ngành) |
+| 3 | **Phương án bảo đảm An ninh, Trật tự cơ sở** | Điều 8 Nghị định `96/2016/NĐ-CP` | Doanh nghiệp lập, gửi kèm hồ sơ cấp Giấy phép ANTT | Trụ sở, cụm kho bãi thương mại, điểm bán lẻ và phương tiện vận chuyển | Định kỳ rà soát hoặc khi có thay đổi phương án |
+| **II** | **NHÓM GIẤY PHÉP PHÒNG CHÁY, CHỮA CHÁY & BẢO VỆ MÔI TRƯỜNG KHO / CỬA HÀNG** | | | | |
+| 4 | **Giấy chứng nhận thẩm duyệt thiết kế về PCCC** | NĐ `136/2020/NĐ-CP` & NĐ `50/2024/NĐ-CP` | Cục C07 hoặc Phòng PC07 Công an cấp tỉnh | Trước khi xây dựng, cải tạo kho bãi lưu trữ hàng hóa đặc thù, cửa hàng giới thiệu & bán sản phẩm | Theo công trình thiết kế |
+| 5 | **Văn bản chấp thuận kết quả nghiệm thu về PCCC** | Điều 15 NĐ `136/2020/NĐ-CP` & NĐ `50/2024/NĐ-CP` | Cục C07 hoặc Phòng PC07 Công an cấp tỉnh | Điều kiện tiên quyết trước khi đưa kho hàng, cửa hàng bán lẻ vào vận hành thực tế | Theo niên hạn công trình |
+| 6 | **Giấy phép môi trường / Đăng ký môi trường** | Luật Bảo vệ môi trường 2020 | Sở TN&MT hoặc UBND cấp huyện/tỉnh | Áp dụng cho các tổng kho thương mại lưu trữ hóa chất, kho tiền chất, vật liệu nổ công nghiệp | `05 – 10 năm` tùy quy mô dung tích kho |
+| **III** | **NHÓM GIẤY PHÉP CHUYÊN NGÀNH THƯƠNG MẠI & LƯU KHO PHÁO HOA / VLNCN** | | | | |
+| 7 | **Giấy phép kinh doanh Pháo hoa** *(không bao gồm sản xuất)* | Điều 14 Nghị định `137/2020/NĐ-CP` | Bộ Quốc phòng (chỉ cấp cho tổ chức, DN thuộc BQP phân phối thương mại) | Doanh nghiệp kinh doanh thương mại, hệ thống chi nhánh phân phối pháo hoa Z121 | Theo quyết định thành lập / giấy phép kinh doanh |
+| 8 | **Văn bản chấp thuận địa điểm Cửa hàng bán lẻ pháo hoa** | NĐ `137/2020/NĐ-CP` & quy định BQP / Công an | Công an tỉnh/thành phố và Công ty Hóa chất 21 (Z121) thẩm duyệt | Từng địa điểm mở Cửa hàng giới thiệu & bán lẻ pháo hoa trực tiếp tới người tiêu dùng | Cấp theo từng năm / từng địa điểm kinh doanh |
+| 9 | **Giấy phép kinh doanh Vật liệu nổ công nghiệp / Tiền chất thuốc nổ** *(không bao gồm sản xuất/nổ mìn)* | Điều 37 Luật `42/2024/QH15` | Bộ Công Thương (Cục ATMT) hoặc UBND cấp tỉnh (Sở Công Thương) | Doanh nghiệp kinh doanh thương mại, phân phối buôn bán VLNCN, tiền chất thuốc nổ | `05 năm` |
+| 10 | **Giấy chứng nhận đủ điều kiện kho bảo quản VLNCN / Tiền chất thuốc nổ** | QCVN `01:2019/BCT` & Điều 41 Luật `42/2024/QH15` | Sở Công Thương cấp tỉnh chủ trì kiểm tra liên ngành | Từng kho thương mại trung chuyển / lưu kho phân phối của doanh nghiệp | Theo thời hạn kiểm định kỹ thuật an toàn kho |
+| **IV** | **NHÓM GIẤY PHÉP VẬN CHUYỂN HÀNG NGUY HIỂM CHÁY NỔ (LOGISTICS / TMS)** | | | | |
+| 11 | **Giấy phép vận chuyển Pháo hoa** | Điều 16 Nghị định `137/2020/NĐ-CP` | **Cục Cảnh sát QLHC về TTXH (C06 - Bộ Công an)** | Từng chuyến hàng vận chuyển pháo hoa thương mại từ kho tổng điều chuyển về cửa hàng | **Chỉ có giá trị cho 01 lượt**, thời hạn $\le 07$ ngày (phải nộp lại trong 7 ngày) |
+| 12 | **Giấy phép vận chuyển Hàng hóa nguy hiểm Loại 1 (Chất nổ)** | Nghị định `34/2024/NĐ-CP` (Điều 17, 18) | **Bộ Công an (Cục C07 hoặc Phòng PC07 Công an tỉnh)** | Phương tiện xe tải chuyên dụng vận chuyển VLNCN, pháo, chất nổ trên mạng lưới giao thông | Cấp theo từng chuyến hoặc theo thời hạn hợp đồng (tối đa $\le 24$ tháng) |
+| 13 | **Giấy chứng nhận kiểm định ATKT & BVMT xe chở hàng nguy hiểm** | Nghị định `34/2024/NĐ-CP` & NĐ `136/2020/NĐ-CP` | Cục Đăng kiểm VN phối hợp Cảnh sát PCCC kiểm định | Xe cơ giới chuyên dụng chở hàng Loại 1 (thùng kín, xích tiếp địa, thiết bị PCCC) | `06 – 12 tháng` theo chu kỳ đăng kiểm |
+| **V** | **NHÓM CHỨNG NHẬN, CHỨNG CHỈ (CC) HUẤN LUYỆN CON NGƯỜI (KHO, BÁN LẺ & VẬN TẢI)** | | | | |
+| 14 | **Chứng nhận huấn luyện nghiệp vụ PCCC & CNCH** | Nghị định `136/2020/NĐ-CP` (Điều 33) | Phòng PC07 hoặc Công an cấp quận/huyện | Thủ kho, nhân viên bán hàng POS, thủ kho/bốc xếp, lái xe tải chuyên dụng, người áp tải | `05 năm` |
+| 15 | **Giấy chứng nhận huấn luyện kỹ thuật an toàn VLNCN / Tiền chất thuốc nổ** | Điều 44 Luật `42/2024/QH15` & QCVN `01:2019/BCT` | Sở Công Thương cấp tỉnh hoặc tổ chức đào tạo được chỉ định | Người quản lý kinh doanh, thủ kho bảo quản thương mại, nhân viên bốc xếp/giao nhận kho | `02 năm` |
+| 16 | **Giấy chứng nhận tập huấn an toàn vận chuyển hàng nguy hiểm** | Nghị định `34/2024/NĐ-CP` (Điều 11) | Cơ quan chức năng hoặc đơn vị đào tạo được ủy quyền | Lái xe tải chuyên trách và người áp tải hàng nguy hiểm tham gia điều phối TMS | `02 năm` |
 
 ---
 

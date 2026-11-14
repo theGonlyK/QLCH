@@ -35,17 +35,23 @@ Theo chỉ đạo của Chủ dự án về việc tập trung khảo sát sâu 
 
 ---
 
-## 2. Danh mục 17 Giấy phép, Giấy Chứng nhận (GCN) & Chứng chỉ (CC) Bắt buộc cần Mô hình hóa
+## 2. Danh mục 16 Giấy phép, Giấy Chứng nhận (GCN) & Chứng chỉ (CC) Bắt buộc cho Chuỗi Thương mại - Kho bãi - Vận chuyển
 
-`BA Lead` cần đưa danh mục chứng từ tuân thủ sau vào phân hệ Quản lý Hồ sơ Pháp lý & Cảnh báo hạn (`Compliance Management`):
+> [!NOTE]
+> **Rà soát theo phạm vi không sản xuất / không thi công nổ mìn:**
+> Danh mục dưới đây đã được tinh chỉnh bám sát chuỗi giá trị **Kinh doanh thương mại B2B/B2C, Quản lý kho bãi (WMS) và Vận chuyển hàng nguy hiểm (TMS)**:
+> - Loại bỏ Giấy phép sản xuất pháo hoa/VLNCN.
+> - Loại bỏ Giấy phép sử dụng VLNCN & Chứng chỉ thợ nổ mìn/chỉ huy nổ mìn (thuộc nghiệp vụ khai thác mỏ/xây dựng của đối tác/khách hàng).
+
+`BA Lead` đưa danh mục 16 chứng từ tuân thủ sau vào phân hệ Quản lý Hồ sơ Pháp lý & Cảnh báo hạn (`Compliance Management`):
 
 | Nhóm | Loại văn bản | Cơ quan cấp | Ghi chú vận hành hệ thống |
 | :--- | :--- | :--- | :--- |
-| **I. Doanh nghiệp & ANTT** | 1. Giấy chứng nhận ĐKDN<br>2. GCN đủ điều kiện về ANTT<br>3. Phương án bảo đảm ANTT | Sở KH&ĐT<br>Cục C06 / Phòng PC06<br>Doanh nghiệp lập | Quản lý theo từng Pháp nhân và từng Chi nhánh/Địa điểm kho |
-| **II. PCCC & Môi trường** | 4. GCN thẩm duyệt thiết kế PCCC<br>5. Văn bản nghiệm thu về PCCC<br>6. Giấy phép môi trường | Cục C07 / Phòng PC07<br>Cục C07 / Phòng PC07<br>Bộ TN&MT / UBND tỉnh | Quản lý theo từng Nhà kho và Điểm bán |
-| **III. Chuyên ngành VLN & Pháo** | 7. Giấy phép SX/KD Pháo hoa<br>8. Chấp thuận địa điểm Cửa hàng bán pháo hoa<br>9. Giấy phép SX/KD/Sử dụng VLNCN<br>10. GCN đủ điều kiện bảo quản VLNCN | Bộ Quốc phòng<br>Công an tỉnh & Z121 duyệt<br>Bộ Công Thương / Sở CT<br>Sở Công Thương cấp | Kiểm soát điều kiện hoạt động của Chi nhánh và Nhà kho |
-| **IV. Vận chuyển hàng nguy hiểm** | 11. Giấy phép vận chuyển Pháo hoa (từng chuyến)<br>12. Giấy phép vận chuyển Hàng nguy hiểm Loại 1<br>13. Kiểm định xe chở hàng nguy hiểm Loại 1 | Cục C06 Bộ Công an<br>Cục C07 / PC07 Công an tỉnh<br>Cục Đăng kiểm & Cảnh sát PCCC | Gắn liền với từng Chuyến xe / Phiếu điều chuyển `TMS` |
-| **V. Con người & Chứng chỉ** | 14. Chứng nhận huấn luyện nghiệp vụ PCCC<br>15. GCN huấn luyện an toàn VLNCN/tiền chất<br>16. GCN tập huấn vận chuyển hàng nguy hiểm<br>17. Chứng chỉ thợ mìn / chỉ huy nổ mìn | Công an PCCC cấp<br>Sở Công Thương cấp<br>Đơn vị được ủy quyền cấp<br>Trường chuyên ngành cấp | Gắn với hồ sơ Nhân sự (Thủ kho, Lái xe, Áp tải) |
+| **I. Doanh nghiệp & ANTT** | 1. Giấy chứng nhận ĐKDN (thương mại/kho/vận tải)<br>2. GCN đủ điều kiện về ANTT (kho/cửa hàng/phương tiện)<br>3. Phương án bảo đảm ANTT cơ sở | Sở KH&ĐT<br>Cục C06 / Phòng PC06<br>Doanh nghiệp lập | Quản lý theo từng Pháp nhân và từng Chi nhánh/Địa điểm kho/Cửa hàng |
+| **II. PCCC & Môi trường** | 4. GCN thẩm duyệt thiết kế PCCC (kho/cửa hàng)<br>5. Văn bản nghiệm thu về PCCC (kho/cửa hàng)<br>6. Giấy phép môi trường / Đăng ký môi trường kho bãi | Cục C07 / Phòng PC07<br>Cục C07 / Phòng PC07<br>Sở TN&MT / UBND tỉnh | Quản lý theo từng Nhà kho và Điểm bán lẻ |
+| **III. Chuyên ngành VLN & Pháo (Thương mại)** | 7. Giấy phép kinh doanh Pháo hoa (BQP cấp cho DN phân phối)<br>8. Chấp thuận địa điểm Cửa hàng bán lẻ pháo hoa Z121<br>9. Giấy phép kinh doanh VLNCN / Tiền chất thuốc nổ<br>10. GCN đủ điều kiện kho bảo quản VLNCN thương mại | Bộ Quốc phòng<br>Công an tỉnh & Z121 duyệt<br>Bộ Công Thương / Sở CT<br>Sở Công Thương cấp | Kiểm soát điều kiện hoạt động của Chi nhánh và Nhà kho trung chuyển |
+| **IV. Vận chuyển hàng nguy hiểm (TMS)** | 11. Giấy phép vận chuyển Pháo hoa (theo từng chuyến, $\le 7$ ngày)<br>12. Giấy phép vận chuyển Hàng nguy hiểm Loại 1<br>13. Kiểm định xe cơ giới chở hàng nguy hiểm Loại 1 | Cục C06 Bộ Công an<br>Cục C07 / PC07 Công an tỉnh<br>Cục Đăng kiểm & Cảnh sát PCCC | Gắn liền với từng Chuyến xe / Phiếu điều chuyển `TMS` |
+| **V. Con người & Chứng chỉ vận hành** | 14. Chứng nhận huấn luyện nghiệp vụ PCCC & CNCH<br>15. GCN huấn luyện an toàn VLNCN/tiền chất (thủ kho, bốc xếp, quản lý KD)<br>16. GCN tập huấn vận chuyển hàng nguy hiểm (lái xe, áp tải) | Công an PCCC cấp<br>Sở Công Thương cấp<br>Đơn vị được ủy quyền cấp | Gắn với hồ sơ Nhân sự (Thủ kho, Thu ngân POS, Lái xe, Áp tải) |
 
 ---
 
@@ -74,7 +80,7 @@ graph TD
     end
 
     subgraph COMPLIANCE["PHÂN HỆ QUẢN TRỊ PHÁP LÝ & AN TOÀN (COMPLIANCE CORE)"]
-        C1["Quản lý Hồ sơ 17 loại Giấy phép/GCN/Chứng chỉ"]
+        C1["Quản lý Hồ sơ 16 loại Giấy phép/GCN/Chứng chỉ"]
         C2["Cảnh báo trước 30-60 ngày khi sắp hết hạn ANTT/PCCC/Đăng kiểm"]
         C3["Nhật ký Bất biến (Audit Log) sẵn sàng báo cáo C06 & Sở Công Thương"]
     end
