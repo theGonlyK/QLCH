@@ -34,13 +34,17 @@
   - `#4` (`[QLCH-TECH-01][Tech]` — `In Review / Đã hoàn thiện đề xuất`): Đã hoàn thành đề xuất kiến trúc kỹ thuật tại `03-ky-thuat/TECH_PROFILE.md` theo phạm vi Brief đã chốt (`P1: WMS + Sơ đồ 2D + Offline-first + $0/Local-first`; `P2: POS + TMS`).
   - `#5` (`[QLCH-UX-01][UX]` — `Todo / OPEN` — **Đã mở khóa đầu vào từ `#2`**): Phác thảo luồng trải nghiệm người dùng cốt lõi & sơ đồ trực quan 2D kho bãi (`P1 WMS`) / cửa hàng & giao vận (`P2`).
   - `#6` (`[QLCH-QA-01][QA]` — `Todo / OPEN` — **Đã mở khóa đầu vào từ `#2`**): Thiết lập khung kiểm thử, đối soát tồn kho/doanh thu và tiêu chuẩn chất lượng (`QUALITY_AND_RELEASE.md`).
-  - `#9` (`[QLCH-DB-01][Database][P0]` — `In Review / Đã hoàn thiện thiết kế`): Thiết kế Kiến trúc Cơ sở dữ liệu, Sơ đồ ERD & Đặc tả Cấu trúc 7 nhóm bảng + 5 bất biến dữ liệu (`INV-DB-01..05`) tại `03-ky-thuat/DATABASE_SCHEMA.md` cho `P1 WMS` & Điểm nối `P2 (POS + TMS)`.
+  - `#9` (`[QLCH-DB-01][Database][P0]` — `Done / CLOSED`): Thiết kế Kiến trúc Cơ sở dữ liệu, Sơ đồ ERD & Đặc tả Cấu trúc 7 nhóm bảng + 5 bất biến dữ liệu (`INV-DB-01..05`) tại `03-ky-thuat/DATABASE_SCHEMA.md` cho cả 4 Phân hệ (`SYS-ADMIN`, `WMS`, `STORE & POS`, `ECOM & TMS`).
   - `#10` (`[QLCH-DB-02][Database]` — `Todo / OPEN`): Xây dựng kịch bản khởi tạo DB (`SQL Migration / ORM Schema`), cài đặt Trigger/Constraint cho 5 Bất biến CSDL (`NEQ Hard-Lock`, `Incompatible Separation`, `Stock Ledger`) & Bộ dữ liệu mẫu (`Seed Data` chuẩn Việt Nam).
   - `#11` (`[QLCH-DB-03][Database / Frontend]` — `Todo / OPEN`): Xây dựng tầng Cơ sở dữ liệu Cục bộ `Offline-first` (`IndexedDB / Dexie.js`: 5 Object Stores) & Hàng đợi Đồng bộ (`offline_sync_queue` + `idempotency_key`) cho thiết bị quét mã vạch tại kho cách ly (`UC-WMS-09`).
+  - `#12` (`[QLCH-MOD-ADM-01][Phân hệ 1: Quản trị ứng dụng]` — `Todo / OPEN`): Thiết kế & Xây dựng Phân hệ 1 — Quản trị Ứng dụng (`@qlch/admin-portal`: Tổ chức, `RBAC` 4 phân hệ + `PIN 2 lớp`, `Master Data SKU/Giá trần`, 17 loại Giấy phép Pháp lý `UC-ADM-01`, `UC-WMS-02`, `UC-WMS-03`).
+  - `#13` (`[QLCH-MOD-WMS-01][Phân hệ 2: Quản lý kho bãi]` — `Todo / OPEN`): Thiết kế & Xây dựng Phân hệ 2 — Quản lý Kho bãi (`@qlch/wms-portal`: Sơ đồ 2D `Zone/Rack/Bin`, Khóa trần `NEQ` & Cách ly, Nhập/Xuất/Điều chuyển 2 bước/Kiểm kê mù, Thẻ kho & `Offline-first` `UC-WMS-01`, `UC-WMS-04..09`).
+  - `#14` (`[QLCH-MOD-STR-01][Phân hệ 3: Quản lý cửa hàng]` — `Todo / OPEN`): Thiết kế & Định khung Phân hệ 3 — Quản lý Cửa hàng (`@qlch/store-pos-portal`: Sơ đồ 2D Quầy/Kệ, Nhận hàng từ kho, Mở/Kết ca mù, `POS < 15s`, Định danh `CCCD 12 số` mua Pháo `Z121` & Đổi/Trả `UC-STR-01`, `UC-POS-01..04`).
+  - `#15` (`[QLCH-MOD-ECM-01][Phân hệ 4: Cổng TMĐT Online]` — `Todo / OPEN`): Thiết kế & Định khung Phân hệ 4 — Cổng Thương mại Điện tử Online (`@qlch/ecom-portal`: Storefront B2C & Portal B2B, Đồng bộ Tồn khả dụng `Available`, Bộ lọc Pháp lý Hàng đặc thù, Đặt hàng `Click & Collect / Giao tận nơi`, `VietQR cục bộ / COD` & Giao nhận `UC-ECM-01..03`, `UC-TMS-01..03`).
 
 ---
 
-## 3. Tóm tắt Quyết định Cổng Brief đã chốt (`QLCH-D002` — `2026-11-14`)
+## 3. Tóm tắt Quyết định Cổng Brief & Kiến trúc 04 Phân hệ đã chốt (`QLCH-D002` & `QLCH-D003` — `2026-11-14`)
 
 Chủ dự án đã xác nhận toàn bộ 5 câu hỏi `Q-QLCH-01..Q-QLCH-05` (chi tiết tại `01-quan-ly/DECISIONS.md`, `01-quan-ly/PROJECT_BRIEF.md` và `02-nghiep-vu/REQUIREMENTS.md`):
 1. **Mô hình hệ sinh thái & Sở hữu (`Q-QLCH-01`):** Quản lý hợp nhất **Bán lẻ (`POS`) - Kho bãi (`WMS`) - Vận chuyển (`TMS`)** cho **Đa ngành hàng tiêu dùng/bán lẻ** (SKU, mã vạch, đa đơn vị tính, lô/HSD) theo mô hình **1 chủ sở hữu quản lý toàn chuỗi (`Single-owner Multi-branch & Multi-warehouse`)**.

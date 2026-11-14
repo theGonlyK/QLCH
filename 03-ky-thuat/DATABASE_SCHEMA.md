@@ -250,18 +250,36 @@ erDiagram
 
 ---
 
-### 3.7. Nhóm 7 — Điểm nối Mở rộng Giai đoạn 2 (`P2 Extension Points: POS & TMS` — `BR-QLCH-02`, `UC-POS-01..04`, `UC-TMS-01..03`)
+### 3.7. Nhóm 7 — Cấu trúc Bảng theo Phân hệ 3 (`Quản lý Cửa hàng - STORE & POS`) & Phân hệ 4 (`Cổng TMĐT Online - ECOM & TMS`) (`QLCH-D003`, `UC-STR-01`, `UC-POS-01..04`, `UC-ECM-01..03`, `UC-TMS-01..03`)
 
-Các bảng Giai đoạn 2 được thiết kế sẵn khóa ngoại nối trực tiếp vào `warehouses`, `products`, `inventory_lots`, `compliance_licenses` và `stock_ledger_entries` của `P1`:
-1. **Phân hệ Bán lẻ `POS` (`UC-POS-01..04`)**:
-   - **`pos_shifts` (`BM-POS-03` — Ca thu ngân & Kết ca mù)**: `id (PK)`, `shift_code`, `store_warehouse_id (FK -> warehouses.id)`, `cashier_id (FK -> users.id)`, `opening_cash`, `system_expected_cash`, `blind_declared_cash (Tiền mặt thu ngân tự đếm nhập mù)`, `cash_discrepancy`, `status ('OPEN' | 'CLOSED_BALANCED' | 'CLOSED_DISCREPANCY')`.
-   - **`pos_orders` & `pos_order_lines` (`BM-POS-01` & `UC-POS-03` — Bán lẻ & Bán Pháo hoa `Z121` / `VLNCN`)**:
-     - Header lưu `order_no`, `shift_id (FK)`, `store_warehouse_id (FK)`, `payment_method ('CASH' | 'VIETQR_LOCAL' | 'MIXED')`, và cụm trường định danh bắt buộc khi giỏ hàng có Pháo hoa `Z121` (`Nghị định 137/2020/NĐ-CP`): **`buyer_full_name`, `buyer_cccd_12 (CHECK length = 12)`, `buyer_dob (CHECK đủ >= 18 tuổi)`, `buyer_address`, `buyer_phone`**.
-     - Lines lưu `product_id (FK)`, `lot_id (FK — bắt buộc chọn đúng Số Lô pháo Z121)`, `qty`, `unit_price (CHECK <= regulated_ceiling_price nếu là Pháo Z121)`. Khi hoàn tất đơn, tự động ghi bút toán `POS_SALE` vào `stock_ledger_entries`.
-   - **`pos_returns` (`BM-POS-02` — Đổi/Trả hàng tại quầy)**: `id (PK)`, `original_pos_order_id (FK — bắt buộc tham chiếu hóa đơn gốc)`, `return_condition ('GOOD_RESELLABLE' | 'DEFECTIVE_QUARANTINE')`, tự động hoàn tồn vào `Kho Hàng Tốt` hoặc `Kho Cách ly Chờ hủy` (`UC-POS-04`).
-2. **Phân hệ Vận chuyển `TMS` (`UC-TMS-01..03`)**:
-   - **`tms_vehicles` (Đội xe chuyên dụng Hàng nguy hiểm Loại 1)**: `id (PK)`, `plate_no (UNIQUE)`, `vehicle_class`, `un_hazard_placard_code`, `has_spark_arrestor (BOOLEAN)`, `has_grounding_chain (BOOLEAN)`, `inspection_license_id (FK -> compliance_licenses.id)`, `status`.
-   - **`tms_shipments` (Vận đơn & Giám sát Giấy phép Vận chuyển $\le 7$ ngày)**: `id (PK)`, `shipment_no (UNIQUE)`, `source_transfer_id (FK -> wms_stock_transfers.id NULL)`, `source_outbound_id (FK -> wms_outbound_orders.id NULL)`, `vehicle_id (FK)`, `driver_id (FK -> users.id)`, `escort_id (FK -> users.id — Người áp tải bắt buộc với VLNCN/Pháo)`, `transport_license_id (FK -> compliance_licenses.id — Giấy phép C06/PC07 cấp từng chuyến <= 7 ngày)`, `approved_route_2d (JSONB)`, `seal_no`, `cod_amount`, `cod_collected_amount`, `pod_signed_by`, `pod_photo_local_path`, `license_return_deadline (DATE — hạn 7 ngày phải nộp trả giấy phép cho Công an)`, `status`.
+Tuân thủ Quyết định `QLCH-D003` tách biệt hệ thống thành **04 Phân hệ**, các bảng dữ liệu của **Phân hệ 3 (`STORE & POS`)** và **Phân hệ 4 (`ECOM & TMS`)** được phân tách tường minh và nối khóa ngoại trực tiếp vào các bảng nền tảng của **Phân hệ 1 (`SYS-ADMIN`: `users`, `products`, `compliance_licenses`)** và **Phân hệ 2 (`WMS`: `warehouses`, `inventory_balances`, `stock_ledger_entries`)**:
+
+#### A. Các bảng chuyên biệt của Phân hệ 3 — Quản lý Cửa hàng (`STORE & POS`)
+1. **`store_display_zones_2d` (`UC-STR-01` — Sơ đồ 2D Quầy/Kệ Trưng bày Cửa hàng & Giới hạn An toàn)**:
+   - `id (PK)`, `store_warehouse_id (FK -> warehouses.id)`, `zone_code`, `name`, `pos_2d_x`, `pos_2d_y`, `width_2d`, `height_2d`, `max_display_neq_kg` *(Giới hạn lượng thuốc pháo Z121 tối đa được phép lưu/trưng bày tại quầy cửa hàng theo giấy phép)*, `current_display_neq_kg`.
+2. **`store_replenishment_requests` (`UC-STR-01` — Phiếu Yêu cầu Bổ sung Hàng từ Kho về Cửa hàng)**:
+   - `id (PK)`, `request_no (UNIQUE)`, `store_warehouse_id (FK)`, `source_hub_warehouse_id (FK)`, `linked_transfer_id (FK -> wms_stock_transfers.id NULL)`, `status ('REQUESTED' | 'APPROVED_IN_TRANSIT' | 'RECEIVED')`.
+3. **`pos_shifts` (`BM-POS-03` — Ca thu ngân & Kết ca mù — `UC-POS-01`)**:
+   - `id (PK)`, `shift_code`, `store_warehouse_id (FK -> warehouses.id)`, `cashier_id (FK -> users.id)`, `opening_cash`, `system_expected_cash`, `blind_declared_cash (Tiền mặt thu ngân tự đếm nhập mù)`, `cash_discrepancy`, `status ('OPEN' | 'CLOSED_BALANCED' | 'CLOSED_DISCREPANCY')`.
+4. **`pos_orders` & `pos_order_lines` (`BM-POS-01`, `UC-POS-02`, `UC-POS-03` — Bán lẻ tại Quầy & Bán Pháo hoa `Z121` / `VLNCN`)**:
+   - **Header (`pos_orders`)**: `id (PK)`, `order_no (UNIQUE)`, `shift_id (FK)`, `store_warehouse_id (FK)`, `payment_method ('CASH' | 'VIETQR_LOCAL' | 'MIXED')`, và cụm trường định danh bắt buộc khi giỏ hàng có Pháo hoa `Z121` (`Nghị định 137/2020/NĐ-CP`): **`buyer_full_name`, `buyer_cccd_12 (CHECK length = 12)`, `buyer_dob (CHECK đủ >= 18 tuổi)`, `buyer_address`, `buyer_phone`**.
+   - **Lines (`pos_order_lines`)**: `id (PK)`, `pos_order_id (FK)`, `product_id (FK)`, `lot_id (FK — bắt buộc chọn đúng Số Lô pháo Z121)`, `qty`, `unit_price (CHECK <= regulated_ceiling_price nếu là Pháo Z121)`. Khi hoàn tất đơn, tự động ghi bút toán `POS_SALE` vào `stock_ledger_entries`.
+5. **`pos_returns` (`BM-POS-02`, `UC-POS-04` — Đổi/Trả hàng tại quầy theo Hóa đơn gốc)**:
+   - `id (PK)`, `original_pos_order_id (FK — bắt buộc tham chiếu hóa đơn gốc)`, `return_condition ('GOOD_RESELLABLE' | 'DEFECTIVE_QUARANTINE')`, tự động hoàn tồn vào `Kho Hàng Tốt` hoặc `Kho Cách ly Chờ hủy`.
+
+#### B. Các bảng chuyên biệt của Phân hệ 4 — Cổng Thương mại Điện tử Online (`ECOM` & Giao vận `TMS`)
+1. **`ecom_catalog_listings` (`UC-ECM-01` — Cấu hình Hiển thị Sản phẩm & Bộ lọc Pháp lý trên Cổng TMĐT Online)**:
+   - `id (PK)`, `product_id (FK -> products.id UNIQUE)`, `slug (UNIQUE)`, `online_title`, `description_html`, `images_json (JSONB)`, `visibility_channel ('B2C_PUBLIC' | 'B2B_LICENSED_ONLY' | 'HIDDEN')` *(Ràng buộc `CHECK`: nếu `products.regulatory_type IN ('TYPE_1A_EXPLOSIVE', 'TYPE_1B_PRECURSOR')` thì bắt buộc `visibility_channel != 'B2C_PUBLIC'`, ẩn tuyệt đối khỏi khách lẻ dân sự)*, `allow_home_delivery (BOOLEAN)`, `allow_click_and_collect (BOOLEAN DEFAULT TRUE)`, `is_published (BOOLEAN)`.
+2. **`ecom_customers` (`UC-ECM-01`, `UC-ECM-02` — Hồ sơ Khách hàng Online B2C & Doanh nghiệp B2B)**:
+   - `id (PK)`, `customer_type ('B2C_INDIVIDUAL' | 'B2B_ENTERPRISE')`, `full_name_or_company`, `phone (UNIQUE)`, `email`, `cccd_12 (VARCHAR(12) NULL — bắt buộc xác thực nếu khách B2C đặt mua Pháo hoa Z121)`, `dob (DATE NULL)`, `tax_code (VARCHAR(32) NULL)`, `b2b_explosive_license_id (FK -> compliance_licenses.id NULL — Giấy phép sử dụng VLNCN của khách B2B)`, `default_shipping_address`, `status`.
+3. **`ecom_orders` & `ecom_order_lines` (`UC-ECM-02` — Đơn đặt hàng từ Cổng Thương mại Điện tử Online)**:
+   - **Header (`ecom_orders`)**: `id (PK)`, `ecom_order_no (UNIQUE)`, `customer_id (FK -> ecom_customers.id)`, `order_channel ('B2C_STOREFRONT' | 'B2B_PORTAL')`, `fulfillment_method ('CLICK_AND_COLLECT' | 'HOME_SITE_DELIVERY')`, `assigned_warehouse_or_store_id (FK -> warehouses.id — Kho hoặc Cửa hàng giữ chỗ `Reserved` và xuất hàng)`, `buyer_cccd_12`, `buyer_full_name`, `buyer_dob`, `buyer_address`, `b2b_license_id (FK NULL)`, `payment_method ('VIETQR_LOCAL' | 'COD')`, `vietqr_payload_local`, `payment_status ('UNPAID' | 'PAID_VERIFIED' | 'COD_PENDING')`, `subtotal_amount`, `shipping_fee`, `total_amount`, `order_status ('PLACED_RESERVED' | 'PICKING_PACKING' | 'READY_FOR_PICKUP' | 'SHIPPING_TMS' | 'COMPLETED_DELIVERED' | 'CANCELLED_RELEASED')`, `created_at`.
+   - **Lines (`ecom_order_lines`)**: `id (PK)`, `ecom_order_id (FK)`, `product_id (FK -> products.id)`, `allocated_lot_id (FK -> inventory_lots.id NULL — chỉ định theo FEFO/FIFO)`, `uom_name`, `ordered_qty`, `base_reserved_qty`, `unit_price (CHECK <= regulated_ceiling_price với Pháo Z121)`, `line_total`.
+4. **`ecom_fulfillments` (`UC-ECM-03` — Điều phối Thực hiện Đơn hàng Online sang `WMS` / `STORE` / `TMS`)**:
+   - `id (PK)`, `ecom_order_id (FK -> ecom_orders.id)`, `fulfillment_warehouse_id (FK -> warehouses.id)`, `linked_wms_outbound_id (FK -> wms_outbound_orders.id NULL)`, `linked_pos_order_id (FK -> pos_orders.id NULL — nếu khách Click & Collect tại cửa hàng)`, `linked_tms_shipment_id (FK -> tms_shipments.id NULL — nếu giao tận nơi)`, `cccd_verified_at_handover (BOOLEAN — xác nhận đã kiểm tra CCCD gốc khi giao Pháo hoa Z121)`, `completed_at`.
+5. **`tms_vehicles` & `tms_shipments` (`UC-TMS-01..03` — Đội xe Chuyên dụng & Vận đơn Giao nhận Hàng Đặc thù / Đơn Online)**:
+   - **`tms_vehicles`**: `id (PK)`, `plate_no (UNIQUE)`, `vehicle_class`, `un_hazard_placard_code`, `has_spark_arrestor (BOOLEAN)`, `has_grounding_chain (BOOLEAN)`, `inspection_license_id (FK -> compliance_licenses.id)`, `status`.
+   - **`tms_shipments`**: `id (PK)`, `shipment_no (UNIQUE)`, `source_transfer_id (FK -> wms_stock_transfers.id NULL)`, `source_outbound_id (FK -> wms_outbound_orders.id NULL)`, `source_ecom_order_id (FK -> ecom_orders.id NULL)`, `vehicle_id (FK)`, `driver_id (FK -> users.id)`, `escort_id (FK -> users.id — Người áp tải bắt buộc với VLNCN/Pháo)`, `transport_license_id (FK -> compliance_licenses.id — Giấy phép C06/PC07 cấp từng chuyến <= 7 ngày)`, `approved_route_2d (JSONB)`, `seal_no`, `cod_amount`, `cod_collected_amount`, `pod_signed_by`, `pod_photo_local_path`, `license_return_deadline (DATE — hạn 7 ngày phải nộp trả giấy phép cho Công an)`, `status`.
 
 ---
 

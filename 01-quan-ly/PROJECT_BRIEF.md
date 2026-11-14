@@ -1,14 +1,16 @@
 # Tóm tắt dự án — QLCH
 
-- **Sản phẩm/dự án:** `QLCH` — Hệ thống Quản lý Chuỗi Bán lẻ, Kho bãi & Vận chuyển hợp nhất (`Unified Retail POS - WMS - TMS System`)
+- **Sản phẩm/dự án:** `QLCH` — Hệ thống Quản lý Chuỗi Cửa hàng, Kho bãi & Thương mại Điện tử Hợp nhất (`4 Phân hệ Tách biệt: Quản trị ứng dụng - Quản lý kho bãi - Quản lý cửa hàng - Cổng TMĐT Online`)
 - **Mục tiêu và vấn đề cần giải quyết:**
-  - Xây dựng hệ thống quản lý vận hành hợp nhất cho chuỗi cửa hàng đa ngành hàng tiêu dùng/bán lẻ theo mô hình **1 chủ sở hữu quản lý toàn chuỗi (`Single-owner Multi-branch & Multi-warehouse`)**, giải quyết triệt để bài toán lệch tồn kho giữa thực tế và sổ sách, thất thoát hàng hóa/hạn sử dụng, tắc nghẽn điều chuyển liên kho và đứt gãy thông tin giữa Kho bãi (`WMS`) — Quầy bán lẻ (`POS`) — Đội xe vận chuyển (`TMS`).
-  - **Chiến lược phân kỳ triển khai (`QLCH-D002`):**
-    - **Giai đoạn 1 (`P1 MVP` — Trọng tâm hiện tại):** Tập trung xây dựng và làm chủ hoàn toàn **Hệ thống Quản lý Kho bãi (`WMS`)** kết hợp **Sơ đồ trực quan 2D vị trí kệ/ô chứa (`Zone/Rack/Bin`)**, hỗ trợ thiết bị quét mã vạch/in tem nhiệt và hoạt động **Offline-first** trong kho.
-    - **Giai đoạn 2 (`P2` — Mở rộng khép kín chuỗi):** Phát triển tiếp **Hệ thống Bán lẻ (`POS` & Chuỗi cửa hàng)** và **Hệ thống Vận chuyển (`TMS` / Đội xe nội bộ, lộ trình giao nhận & đối soát COD)** đấu nối trực tiếp trên nền dữ liệu tồn kho chuẩn của `P1`.
-- **Người dùng/đối tượng sử dụng:**
-  - **Giai đoạn 1 (`P1 - WMS`):** Chủ hệ thống/chuỗi (`System Owner`), Quản lý kho tổng/kho chi nhánh (`Warehouse Manager`), Nhân viên kho (`Warehouse Staff` — nhập/xuất/cất hàng/soạn hàng/kiểm kê), Kế toán kho (`Inventory Accountant`).
-  - **Giai đoạn 2 (`P2 - POS & TMS`):** Quản lý cửa hàng (`Store Manager`), Thu ngân/Bán hàng (`POS Cashier`), Điều phối vận chuyển (`Dispatcher`), Tài xế/Nhân viên giao nhận (`Driver/Shipper`), Khách mua hàng.
+  - Xây dựng hệ thống quản lý vận hành hợp nhất cho chuỗi cửa hàng đa ngành hàng tiêu dùng/bán lẻ (bao gồm cả **Hàng đặc thù: Chất gây cháy nổ, Vật liệu nổ công nghiệp `VLNCN`, Pháo hoa `Z121`**) theo mô hình **1 chủ sở hữu quản lý toàn chuỗi (`Single-owner Multi-branch & Multi-warehouse`)**.
+  - **Cấu trúc 04 Phân hệ tách biệt rõ ràng (`QLCH-D003`):**
+    1. **Phân hệ 1 — Quản trị Ứng dụng (`SYS-ADMIN`):** Quản trị cấu hình toàn chuỗi, cơ cấu tổ chức, phân quyền `RBAC` 4 phân hệ + xác thực 2 lớp (`PIN/OTP`), danh mục dùng chung (`Master Data: SKU, Đa ĐVT, Giá trần`), **Hồ sơ 17 loại Giấy phép Pháp lý (`ANTT/PCCC/VLNCN/Pháo`)** & Nhật ký Kiểm toán (`Audit Logs`).
+    2. **Phân hệ 2 — Quản lý Kho bãi (`WMS`):** Quản lý Kho tổng (`Hub/DC`), Kho chuyên dụng & Kho cách ly; Sơ đồ 2D mặt bằng kho (`Zone/Rack/Bin`); Khóa chặn trần thuốc nổ quy đổi (`NEQ Hard-Lock`) & cách ly hàng kỵ nhau; Nhập kho, Xuất kho, Điều chuyển liên kho 2 bước (`In-Transit`), Kiểm kê mù bằng mã vạch, Thẻ kho bất biến & Tác nghiệp kho `Offline-first`.
+    3. **Phân hệ 3 — Quản lý Cửa hàng (`STORE & POS`):** Quản lý vận hành tại điểm bán vật lý, Sơ đồ 2D quầy/kệ cửa hàng, nhận hàng điều chuyển từ kho, Mở/Kết ca mù, Bán hàng tại quầy `POS < 15s`, Bán hàng đặc thù tại quầy (định danh `CCCD 12 số` Pháo hoa `Z121`), và Đổi/Trả hàng.
+    4. **Phân hệ 4 — Cổng Thương mại Điện tử Online (`ECOM`):** Cổng trưng bày & đặt hàng trực tuyến (`Storefront B2C` & `Portal B2B`) đồng bộ tồn kho khả dụng (`Available`) thời gian thực, kiểm soát tuân thủ pháp lý hàng đặc thù khi đặt hàng Online, thanh toán `VietQR cục bộ / COD`, và luồng xử lý đơn hàng Online (`Order Fulfillment` đẩy xuống `WMS`/`Cửa hàng` & giao vận `TMS`).
+  - **Chiến lược phân kỳ triển khai (`QLCH-D002` & `QLCH-D003`):**
+    - **Giai đoạn 1 (`P1 MVP` — Trọng tâm hiện tại):** Triển khai **Phân hệ 1 (`Quản trị Ứng dụng` nền tảng)** và **Phân hệ 2 (`Quản lý Kho bãi - WMS`)** kết hợp Sơ đồ 2D `Zone/Rack/Bin`, thiết bị mã vạch/in nhiệt và `Offline-first`.
+    - **Giai đoạn 2 (`P2` — Mở rộng khép kín chuỗi Đa kênh `Omnichannel`):** Triển khai **Phân hệ 3 (`Quản lý Cửa hàng - STORE & POS`)** và **Phân hệ 4 (`Cổng Thương mại Điện tử Online - ECOM` & Giao vận `TMS`)** đấu nối trực tiếp trên nền dữ liệu tồn kho và phân quyền chuẩn của `P1`.
 - **Thị trường đầu tiên:** Thị trường Việt Nam (áp dụng cho mô hình doanh nghiệp/chuỗi cửa hàng bán lẻ & phân phối đa kho bãi, đa chi nhánh).
 - **Chủ dự án:** Người dùng (chủ workspace, thẩm quyền phê duyệt cao nhất)
 - **Người phụ trách mảng (giai đoạn Khởi tạo & Chuẩn bị G1):**

@@ -1,97 +1,116 @@
-# Đặc tả Kịch bản Ca sử dụng (Use Cases) — QLCH
+# Đặc tả Kịch bản Ca sử dụng (Use Cases) theo 04 Phân hệ — QLCH
 
-- **Mã dự án:** `QLCH` — Hệ thống Quản lý Chuỗi Bán lẻ (`POS`), Kho bãi (`WMS`) & Vận chuyển (`TMS`) Hợp nhất (Hỗ trợ Hàng tiêu dùng/bán lẻ & **Hàng đặc thù: Chất gây cháy nổ, Vật liệu nổ, Pháo**)
-- **Phiên bản:** `1.1` (Tích hợp đầy đủ Quyết định Cổng Brief [`QLCH-D002`](file:///Users/uni/orca/workspaces/QLCH/c-ng-brief-qlch-ba-01-ba-p0-ch-n-ng-g-ng-l-m-r-y/01-quan-ly/DECISIONS.md) và trọn bộ 02 gói khảo sát từ `Marketing Lead` [`QLCH-MKT-01` & `MKT-TO-BA-02`])
+- **Mã dự án:** `QLCH` — Hệ thống Quản lý Chuỗi Cửa hàng, Kho bãi & Thương mại Điện tử Hợp nhất (`04 Phân hệ Tách biệt: Quản trị ứng dụng - Quản lý kho bãi - Quản lý cửa hàng - Cổng TMĐT Online`)
+- **Phiên bản:** `1.2` (Tích hợp đầy đủ Quyết định [`QLCH-D002`, `QLCH-D003`](file:///Users/uni/Documents/AI/AI-Workspace/AI-Workspace/TEAM_ORCA/4.Du_an/QLCH/01-quan-ly/DECISIONS.md) tách biệt 4 phân hệ và trọn bộ khảo sát từ `Marketing Lead` [`QLCH-MKT-01` & `MKT-TO-BA-02`])
 - **Ngày cập nhật:** `2026-11-14`
 - **Người thực hiện:** `BA Lead` (Kỹ năng `business-analysis/SKILL.md`)
 - **Căn cứ truy vết chuẩn:**
-  1. **Quyết định phạm vi & lộ trình [`01-quan-ly/DECISIONS.md`](file:///Users/uni/orca/workspaces/QLCH/c-ng-brief-qlch-ba-01-ba-p0-ch-n-ng-g-ng-l-m-r-y/01-quan-ly/DECISIONS.md) (`QLCH-D002`):**
-     - **Giai đoạn 1 (`P1 MVP`):** Tập trung làm trước **Hệ thống Quản lý Kho bãi (`WMS`)** kết hợp **Sơ đồ trực quan 2D (`Zone/Rack/Bin`)**, thiết bị quét mã vạch/in nhiệt, vận hành **Offline-first** và nguyên tắc **`$0 First / Local Library-First`**.
-     - **Giai đoạn 2 (`P2`):** Mở rộng **Hệ thống Bán lẻ (`POS`)** và **Hệ thống Vận chuyển (`TMS`)** kết nối trực tiếp vào `WMS`.
-  2. **Danh mục yêu cầu nghiệp vụ [`02-nghiep-vu/REQUIREMENTS.md`](file:///Users/uni/orca/workspaces/QLCH/c-ng-brief-qlch-ba-01-ba-p0-ch-n-ng-g-ng-l-m-r-y/02-nghiep-vu/REQUIREMENTS.md)** (`BR-QLCH-01..02`, `FR-WMS-01..09`, `NFR-QLCH-01..03`, `FR-POS-01..02`, `FR-TMS-01..02`).
-  3. **Trọn bộ tài liệu khảo sát & bàn giao từ `Marketing Lead` (`#3 QLCH-MKT-01` & `MKT-TO-BA-02`):**
-     - [`REF-BIZ-003`](file:///Users/uni/orca/workspaces/QLCH/c-ng-brief-qlch-ba-01-ba-p0-ch-n-ng-g-ng-l-m-r-y/2.Tai_lieu_tham_khao/3.Tai_lieu_nghiep_vu/DANH_MUC_VA_MA_TRAN_PHAN_MEM_POS_CHUOI_BAN_LE_VN.md): Ma trận 12 nhóm nghiệp vụ 5 phần mềm (`KiotViet`, `Sapo POS`, `Haravan`, `PosApp`, `Odoo POS`).
-     - [`REF-MKT-004`](file:///Users/uni/orca/workspaces/QLCH/c-ng-brief-qlch-ba-01-ba-p0-ch-n-ng-g-ng-l-m-r-y/2.Tai_lieu_tham_khao/3.Tai_lieu_nghiep_vu/BO_BIEU_MAU_HOA_DON_POS_VA_XUAT_NHAP_KIEM_KHO_VN.md): Bộ 07 biểu mẫu chuẩn Việt Nam (`BM-KHO-01..04` theo Thông tư `133/2016/TT-BTC` & `200/2014/TT-BTC`; `BM-POS-01..03` theo Nghị định `70/2025/NĐ-CP`).
-     - [`REF-MKT-005`](file:///Users/uni/orca/workspaces/QLCH/c-ng-brief-qlch-ba-01-ba-p0-ch-n-ng-g-ng-l-m-r-y/2.Tai_lieu_tham_khao/5.Tai_lieu_marketing/KHAO_SAT_KHO_BAI_VAN_CHUYEN_HANG_DAC_THU_CHAY_NO_PHAO.md) & [`02-nghiep-vu/KHAO_SAT_NGHIEP_VU_KHO_VAN_CHUYEN_HANG_DAC_THU_CHAY_NO.md`](file:///Users/uni/orca/workspaces/QLCH/c-ng-brief-qlch-ba-01-ba-p0-ch-n-ng-g-ng-l-m-r-y/02-nghiep-vu/KHAO_SAT_NGHIEP_VU_KHO_VAN_CHUYEN_HANG_DAC_THU_CHAY_NO.md): Khảo sát chuyên sâu Kho bãi, Kinh doanh & Vận chuyển **Hàng đặc thù (Chất gây cháy nổ, Vật liệu nổ công nghiệp `VLNCN`, Pháo hoa `Z121`)** cùng ma trận **17 loại Giấy phép/GCN/Chứng chỉ** theo Luật `42/2024/QH15`, Nghị định `137/2020/NĐ-CP`, Nghị định `34/2024/NĐ-CP`, Nghị định `96/2016/NĐ-CP` và `QCVN 01:2019/BCT`.
+  1. **Quyết định phạm vi, lộ trình & kiến trúc 4 phân hệ [`01-quan-ly/DECISIONS.md`](file:///Users/uni/Documents/AI/AI-Workspace/AI-Workspace/TEAM_ORCA/4.Du_an/QLCH/01-quan-ly/DECISIONS.md) (`QLCH-D002`, `QLCH-D003`):**
+     - **Phân hệ 1 — Quản trị ứng dụng (`SYS-ADMIN` — `P1` nền tảng):** Tổ chức chuỗi, Phân quyền `RBAC` 4 phân hệ + Xác thực 2 lớp `PIN/OTP`, Danh mục dùng chung (`Master Data: SKU, Đa ĐVT, Giá trần`), Hồ sơ 17 loại Giấy phép Pháp lý & Nhật ký Kiểm toán.
+     - **Phân hệ 2 — Quản lý kho bãi (`WMS` — Trọng tâm `P1 MVP`):** Kho tổng/Kho chuyên dụng/Kho cách ly, Sơ đồ 2D (`Zone/Rack/Bin`), Khóa chặn trần `NEQ` & cách ly hàng kỵ nhau, Nhập/Xuất/Điều chuyển 2 bước `In-Transit`/Kiểm kê mù, Thẻ kho bất biến & `Offline-first`.
+     - **Phân hệ 3 — Quản lý cửa hàng (`STORE & POS` — `P2`):** Sơ đồ 2D quầy/kệ cửa hàng, nhận hàng điều chuyển từ kho, Mở/Kết ca mù, Bán hàng tại quầy `POS < 15s`, Bán hàng đặc thù (`CCCD 12 số` Pháo hoa `Z121`) & Đổi/Trả hàng.
+     - **Phân hệ 4 — Cổng thương mại điện tử online (`ECOM` & Giao vận `TMS` — `P2`):** Cổng trưng bày & đặt hàng Online (`Storefront B2C` & `Portal B2B`) đồng bộ tồn khả dụng (`Available`), bộ lọc pháp lý hàng đặc thù, thanh toán `VietQR cục bộ / COD`, xử lý đơn hàng Online (`Order Fulfillment`) & điều phối đội xe vận chuyển (`TMS`).
+  2. **Danh mục yêu cầu nghiệp vụ [`02-nghiep-vu/REQUIREMENTS.md`](file:///Users/uni/Documents/AI/AI-Workspace/AI-Workspace/TEAM_ORCA/4.Du_an/QLCH/02-nghiep-vu/REQUIREMENTS.md)** (`BR-QLCH-01..02`, `FR-ADM-01..03`, `FR-WMS-01..08`, `FR-STR-01`, `FR-POS-01..02`, `FR-ECM-01..03`, `NFR-QLCH-01..03`).
+  3. **Trọn bộ tài liệu khảo sát & bàn giao từ `Marketing Lead` (`#3 QLCH-MKT-01` & `MKT-TO-BA-02`):** `REF-BIZ-003`, `REF-MKT-004` (`BM-KHO-01..04`, `BM-POS-01..03`), `REF-MKT-005` (`QCVN 01:2019/BCT`, Nghị định `137/2020/NĐ-CP`, Luật `42/2024/QH15`, Nghị định `34/2024/NĐ-CP`).
 
 ---
 
-## 1. Danh mục Tác nhân (Actors) & Sơ đồ Tổng quan Hệ thống Use Cases (`P1` & `P2`)
+## 1. Danh mục Tác nhân (Actors) & Sơ đồ Kiến trúc Use Cases theo 04 Phân hệ (`QLCH-D003`)
 
-### 1.1. Danh mục Tác nhân (Actors)
+### 1.1. Danh mục Tác nhân (Actors) trên 04 Phân hệ
 
-| Mã Actor | Tên vai trò (Actor) | Giai đoạn chính | Trách nhiệm cốt lõi trên hệ thống `QLCH` |
+| Mã Actor | Tên vai trò (Actor) | Phân hệ truy cập chính | Trách nhiệm cốt lõi trên hệ thống `QLCH` |
 | :---: | :--- | :---: | :--- |
-| **`ACT-OWN`** | **Chủ hệ thống / Chủ chuỗi (`System Owner`)** | `P1` & `P2` | Cấu hình chuỗi kho/chi nhánh, quản lý hồ sơ 17 loại Giấy phép pháp lý (`ANTT/PCCC/VLNCN/Pháo`), phê duyệt điều chỉnh kiểm kê/xuất hủy bằng xác thực 2 lớp (PIN/OTP), xem báo cáo toàn chuỗi. |
-| **`ACT-WM`** | **Quản lý kho / Thủ kho (`Warehouse Manager`)** | **`P1 (WMS)`** | Thiết lập sơ đồ kho 2D (`Zone/Rack/Bin`), cấu hình định mức tồn chứa thuốc nổ tối đa (`NEQ/NEW`) & quy tắc phân khu cách ly (`QCVN 01:2019/BCT`), duyệt phiếu nhập/xuất/điều chuyển/kiểm kê. |
-| **`ACT-WS`** | **Nhân viên kho (`Warehouse Staff`)** | **`P1 (WMS)`** | Tác nghiệp trực tiếp bằng máy quét mã vạch/Mobile Web tại kệ kho: Nhận hàng, Cất hàng (`Putaway`), Soạn hàng (`Picking`), Quét đếm kiểm kê theo Lô/Serial/HSD (kể cả khi `Offline`). |
-| **`ACT-ACC`** | **Kế toán & Pháp chế (`Accountant & Compliance`)** | `P1` & `P2` | Kiểm soát giá vốn bình quân (`MAC`), đối soát Nhập - Xuất - Tồn (`NXT`), Thẻ kho, công nợ NCC, đối soát ca/COD và trích xuất báo cáo định kỳ nộp Cục `C06/PC06`, `C07/PC07`, Sở Công Thương. |
-| **`ACT-POS`** | **Thu ngân / Cửa hàng trưởng (`POS Cashier / Store Mgr`)** | `P2 (POS)` | Mở/kết ca (`BM-POS-03`), bán hàng quầy POS `< 15s/đơn` (`BM-POS-01`), thu thập định danh `CCCD 12 số` khi bán lẻ Pháo hoa `Z121` / kiểm tra Giấy phép sử dụng `VLNCN` (`B2B`), xử lý đổi trả (`BM-POS-02`). |
-| **`ACT-TMS`** | **Điều phối vận chuyển, Lái xe & Người áp tải (`Dispatcher, Driver & Escort`)** | `P2 (TMS)` | Điều phối xe chuyên dụng Hàng nguy hiểm Loại 1, gắn Giấy phép vận chuyển Công an cấp (`hạn <= 7 ngày`), niêm phong kẹp chì, theo dõi lộ trình 2D, xác nhận giao hàng (`POD`), đối soát `COD` & nộp trả giấy phép. |
+| **`ACT-OWN`** | **Chủ hệ thống / Quản trị viên (`System Owner / Admin`)** | **1. Quản trị ứng dụng (`SYS-ADMIN`)** | Cấu hình tổ chức chuỗi, phân quyền `RBAC` 4 phân hệ, quản lý Master Data (`SKU`, giá trần), quản lý 17 loại Giấy phép pháp lý (`ANTT/PCCC/VLNCN/Pháo`), phê duyệt 2 lớp (`PIN/OTP`), xem báo cáo toàn chuỗi. |
+| **`ACT-WM`** | **Quản lý kho / Thủ kho (`Warehouse Manager`)** | **2. Quản lý kho bãi (`WMS`)** | Thiết lập sơ đồ kho 2D (`Zone/Rack/Bin`), cấu hình định mức `NEQ` & quy tắc phân khu cách ly (`QCVN 01:2019/BCT`), duyệt phiếu nhập/xuất/điều chuyển/kiểm kê. |
+| **`ACT-WS`** | **Nhân viên kho (`Warehouse Staff`)** | **2. Quản lý kho bãi (`WMS`)** | Tác nghiệp bằng máy quét mã vạch/Mobile Web tại kệ kho: Nhận hàng, Cất hàng (`Putaway`), Soạn hàng (`Picking` đơn B2B/điều chuyển/đơn Online `ECOM`), Quét đếm kiểm kê mù (kể cả khi `Offline`). |
+| **`ACT-POS`** | **Cửa hàng trưởng / Thu ngân (`Store Mgr / POS Cashier`)** | **3. Quản lý cửa hàng (`STORE & POS`)** | Quản lý sơ đồ 2D quầy/kệ cửa hàng, nhận hàng từ kho, Mở/kết ca mù (`BM-POS-03`), bán hàng `POS < 15s` (`BM-POS-01`), định danh `CCCD 12 số` khi bán Pháo hoa `Z121`, bàn giao đơn `Click & Collect` & đổi trả (`BM-POS-02`). |
+| **`ACT-CUS`** | **Khách mua hàng Online (`B2C Customer / B2B Buyer`)** | **4. Cổng TMĐT Online (`ECOM`)** | Tra cứu sản phẩm & tồn khả dụng theo chi nhánh, đặt hàng trực tuyến (`Giao tận nơi` hoặc `Nhận tại cửa hàng - Click & Collect`), khai báo định danh `CCCD 12 số` (nếu mua Pháo hoa `Z121`) hoặc gắn Giấy phép `VLNCN` (`B2B`), thanh toán `VietQR cục bộ / COD`. |
+| **`ACT-TMS`** | **Điều phối vận chuyển, Lái xe & Người áp tải (`Dispatcher, Driver & Escort`)** | **2. Kho bãi (`WMS`) & 4. TMĐT/Giao vận (`ECOM-TMS`)** | Điều phối xe chuyên dụng Hàng nguy hiểm Loại 1, gắn Giấy phép vận chuyển Công an cấp (`hạn <= 7 ngày`), niêm phong kẹp chì, giao hàng liên kho/giao đơn Online (`POD`), đối soát `COD` & nộp trả giấy phép. |
+| **`ACT-ACC`** | **Kế toán & Pháp chế (`Accountant & Compliance`)** | **1. Quản trị (`SYS-ADMIN`) & 2. Kho bãi (`WMS`)** | Kiểm soát giá vốn bình quân (`MAC`), đối soát `NXT`, Thẻ kho, công nợ NCC, đối soát ca POS/tiền `COD` Online và trích xuất sổ báo cáo định kỳ nộp Cục `C06`, `C07`, Sở Công Thương. |
 
-### 1.2. Sơ đồ Kiến trúc 16 Use Cases theo Lộ trình `P1 (WMS)` $\rightarrow$ `P2 (POS + TMS)`
+### 1.2. Sơ đồ Kiến trúc 21 Use Cases tách biệt theo 04 Phân hệ (`QLCH-D003`)
 
 ```mermaid
 flowchart TD
-    subgraph P1_WMS["GIAI ĐOẠN 1 (P1 MVP): HỆ THỐNG QUẢN LÝ KHO BÃI (WMS) & AN TOÀN HÀNG ĐẶC THÙ"]
+    subgraph SUB1["PHÂN HỆ 1: QUẢN TRỊ ỨNG DỤNG (SYS-ADMIN — P1 NỀN TẢNG)"]
+        UCA01["UC-ADM-01: Quản trị Tổ chức Chuỗi, Phân quyền RBAC 4 Phân hệ & Xác thực 2 lớp (PIN/OTP)"]
+        UC02["UC-WMS-02 (Master Data): Quản trị Danh mục SKU, Đa ĐVT, Giá trần & Thuộc tính Hàng Cháy nổ (Mã UN, NEQ)"]
+        UC03["UC-WMS-03 (Compliance): Quản trị Hồ sơ 17 loại Giấy phép Pháp lý (ANTT, PCCC, VLNCN, Pháo) & Khóa Tự động"]
+    end
+
+    subgraph SUB2["PHÂN HỆ 2: QUẢN LÝ KHO BÃI (WMS — P1 MVP TRỌNG TÂM)"]
         UC01["UC-WMS-01: Thiết lập Đa kho, Sơ đồ 2D (Zone/Rack/Bin), Định mức NEQ & Phân khu Cách ly"]
-        UC02["UC-WMS-02: Quản lý Danh mục SKU, Đa ĐVT, Lô/Serial/HSD & Thuộc tính Hàng Cháy nổ (Mã UN, NEQ)"]
-        UC03["UC-WMS-03: Quản lý Hồ sơ 17 loại Giấy phép/GCN/CC (ANTT, PCCC, VLNCN, Pháo) & Cảnh báo Hạn"]
-        UC04["UC-WMS-04: Nhập kho (BM-KHO-01), Cất hàng (Putaway), Khóa chặn Trần NEQ & Cách ly Kíp nổ/Thuốc nổ"]
-        UC05["UC-WMS-05: Xuất kho (BM-KHO-02), Soạn hàng FEFO/FIFO, Đối chiếu Giấy phép & Xuất hủy An toàn"]
+        UC04["UC-WMS-04: Nhập kho (BM-KHO-01), Putaway, Khóa chặn Trần NEQ & Cách ly Kíp nổ/Thuốc nổ"]
+        UC05["UC-WMS-05: Xuất kho (BM-KHO-02), Picking FEFO/FIFO, Đối chiếu Giấy phép & Xuất hủy An toàn"]
         UC06["UC-WMS-06: Điều chuyển Liên kho 2 bước (BM-KHO-03 In-Transit), Gắn Giấy phép VC & Niêm chì"]
         UC07["UC-WMS-07: Kiểm kê Kho bằng Mã vạch (BM-KHO-04 Blind Count), 3 Cột Phẩm chất & Cân bằng kho"]
-        UC08["UC-WMS-08: Cảnh báo Tồn tối thiểu/Cận date/Trần NEQ 80% & Báo cáo Thẻ kho/NXT/Báo cáo C06-SCT"]
+        UC08["UC-WMS-08: Cảnh báo Tồn/Cận date/Trần NEQ 80% & Báo cáo Thẻ kho, NXT, Sổ Công an C06"]
         UC09["UC-WMS-09: Tác nghiệp Kho Ngoại tuyến (Offline-first IndexedDB) & Đồng bộ Hàng đợi Sự kiện"]
     end
 
-    subgraph P2_EXT["GIAI ĐOẠN 2 (P2): MỞ RỘNG BÁN LẺ (POS) & VẬN CHUYỂN HÀNG ĐẶC THÙ (TMS)"]
+    subgraph SUB3["PHÂN HỆ 3: QUẢN LÝ CỬA HÀNG (STORE & POS — P2)"]
+        UCS01["UC-STR-01: Quản lý Sơ đồ 2D Quầy/Kệ Cửa hàng, Định mức Trưng bày An toàn & Nhận hàng từ Kho"]
         UC10["UC-POS-01: Mở ca, Thu/Chi tại quầy, Kết ca Mù (Blind Close) & Bàn giao Két tiền (BM-POS-03)"]
         UC11["UC-POS-02: Bán hàng POS Tốc độ cao (<15s), Tạm lưu bill, VietQR cục bộ & In bill K80/K57 (BM-POS-01)"]
-        UC12["UC-POS-03: Bán hàng Đặc thù: Thu thập CCCD 12 số (Pháo hoa Z121), Khóa giá trần & Kiểm định mức VLNCN"]
+        UC12["UC-POS-03: Bán hàng Đặc thù tại quầy: Thu thập CCCD 12 số (Pháo Z121), Khóa giá trần & B2B VLNCN"]
         UC13["UC-POS-04: Đổi / Trả hàng tại quầy theo Hóa đơn gốc & Phân loại Kho Hàng Trả/Cách ly (BM-POS-02)"]
-        UC14["UC-TMS-01: Quản lý Đội xe Chuyên dụng Hàng Loại 1 (Biển UN, Kiểm định) & Hồ sơ Lái xe/Người áp tải"]
-        UC15["UC-TMS-02: Lập Vận đơn, Gắn Giấy phép Vận chuyển C06/PC07 (<=7 ngày) & Điều phối Lộ trình 2D"]
+    end
+
+    subgraph SUB4["PHÂN HỆ 4: CỔNG THƯƠNG MẠI ĐIỆN TỬ ONLINE & GIAO VẬN (ECOM & TMS — P2)"]
+        UCE01["UC-ECM-01: Cổng Trưng bày Online (B2C/B2B), Đồng bộ Tồn Khả dụng (Available) & Bộ lọc Pháp lý Hàng đặc thù"]
+        UCE02["UC-ECM-02: Giỏ hàng, Đặt hàng Online (Click & Collect / Giao tận nơi), Định danh CCCD 12 số & VietQR/COD"]
+        UCE03["UC-ECM-03: Xử lý Đơn hàng Online (Order Fulfillment): Giữ chỗ Reserved -> Soạn hàng Kho/CH -> Giao khách"]
+        UC14["UC-TMS-01: Quản lý Đội xe Chuyên dụng Hàng Loại 1 (Biển UN, Kiểm định) & Hồ sơ Lái xe/Áp tải"]
+        UC15["UC-TMS-02: Lập Vận đơn, Gắn Giấy phép VC C06/PC07 (<=7 ngày) & Điều phối Lộ trình 2D"]
         UC16["UC-TMS-03: Xác nhận Giao hàng (POD), Đối soát Kẹp chì, Đối soát COD 100% & Thu hồi Giấy phép VC"]
     end
 
-    UC03 --> UC01
-    UC01 --> UC04
+    UCA01 --> SUB2
     UC02 --> UC04
-    UC04 --> UC05
-    UC04 --> UC06
-    UC06 -.->|"Liên thông In-Transit & Giấy phép VC"| UC15
-    UC03 -.->|"Kiểm soát Chứng chỉ Lái xe/Áp tải"| UC14
-    UC05 -.->|"Liên thông Tồn kho & Giá niêm yết"| UC11
-    UC11 --> UC12
+    UC03 --> UC01
+    UC06 -.->|"Cấp hàng cho Cửa hàng"| UCS01
+    UCS01 --> UC11
+    UC04 -.->|"Đồng bộ Available Stock"| UCE01
+    UCE01 --> UCE02
+    UCE02 --> UCE03
+    UCE03 -.->|"Đẩy lệnh Picking"| UC05
+    UCE03 -.->|"Click & Collect"| UC11
+    UCE03 --> UC15
     UC14 --> UC15
     UC15 --> UC16
 ```
 
 ---
 
-## 2. Bảng Ma trận Tổng hợp Danh sách 16 Use Cases (`P1` & `P2`)
+## 2. Bảng Ma trận Tổng hợp 21 Use Cases theo 04 Phân hệ (`QLCH-D003`)
 
-| Mã UC | Tên Use Case | Phân hệ | Giai đoạn | Ưu tiên | Truy vết Yêu cầu (`REQUIREMENTS.md`) | Truy vết Tài liệu & Biểu mẫu Marketing (`QLCH-MKT-01` & `MKT-TO-BA-02`) |
+| Mã UC | Tên Use Case | Phân hệ (`QLCH-D003`) | Giai đoạn | Ưu tiên | Truy vết Yêu cầu (`REQUIREMENTS.md`) | Truy vết Tài liệu & Biểu mẫu (`QLCH-MKT-01` & `MKT-TO-BA-02`) |
 | :---: | :--- | :---: | :---: | :---: | :--- | :--- |
-| **`UC-WMS-01`** | Thiết lập Đa kho (`Hub/Chi nhánh`), Sơ đồ kho 2D (`Zone/Rack/Bin`), Định mức `NEQ` & Quy tắc Phân khu Cách ly | `WMS` | **`P1 MVP`** | `P0 - Bắt buộc` | `BR-QLCH-01`, `FR-WMS-01`, `FR-WMS-02`, `FR-WMS-08` | `REF-BIZ-003` (Mục 2) & `REF-MKT-005` (`QCVN 01:2019/BCT` — Khoảng cách an toàn, Định mức `NEQ`, Phân khu cách ly) |
-| **`UC-WMS-02`** | Quản lý Danh mục Hàng hóa (`SKU`), Đa ĐVT (`Multi-UoM`), Lô/Serial/HSD & Thuộc tính Hàng Cháy nổ (`Mã UN`, `NEQ`) | `WMS` | **`P1 MVP`** | `P0 - Bắt buộc` | `FR-WMS-03`, `FR-WMS-08`, `NFR-QLCH-01` | `REF-BIZ-003` (Mục 1) & `REF-MKT-005` (Mục 2 & 7.1 — Phân loại `VLNCN`, `Pháo hoa Z121`, `Hóa chất`, `Mã UN`, `NEQ`) |
-| **`UC-WMS-03`** | Quản lý Hồ sơ 17 loại Giấy phép / GCN / Chứng chỉ (`ANTT`, `PCCC`, `VLNCN`, `Pháo`) & Cảnh báo Hết hạn (`30-60 ngày`) | `WMS / Compliance` | **`P1 MVP`** | `P0 - Bắt buộc` | `FR-WMS-09` | `REF-MKT-005` (Mục 3 — Ma trận 17 loại Giấy phép theo NĐ `96/2016`, NĐ `136/2020`, NĐ `137/2020`, Luật `42/2024`) |
-| **`UC-WMS-04`** | Nhập kho (`Inbound`), Cất hàng (`Putaway`), Khóa chặn Trần `NEQ` (`Hard Lock`) & Chặn Xếp chung Hàng Kỵ nhau | `WMS` | **`P1 MVP`** | `P0 - Bắt buộc` | `FR-WMS-04`, `FR-WMS-08` | **`BM-KHO-01`** (`Mẫu số 01-VT` — TT133/TT200) & `REF-MKT-005` (Mục 5.2 & 7.2 — Kiểm soát `NEQ` & Cách ly Kíp nổ/Thuốc nổ) |
-| **`UC-WMS-05`** | Xuất kho (`Outbound`), Soạn hàng `FEFO/FIFO` (`Picking`), Kiểm tra Giấy phép & Xuất hủy Hàng hỏng/Hết hạn | `WMS` | **`P1 MVP`** | `P0 - Bắt buộc` | `FR-WMS-03`, `FR-WMS-04`, `FR-WMS-08` | **`BM-KHO-02`** (`Mẫu số 02-VT` — TT133/TT200) & `REF-MKT-005` (Đối soát Lệnh xuất/Giấy phép & PIN 2 lớp) |
-| **`UC-WMS-06`** | Điều chuyển Liên kho 2 bước (`In-Transit Stock Transfer`), Gắn Giấy phép Vận chuyển & Niêm phong Kẹp chì | `WMS` | **`P1 MVP`** | `P0 - Bắt buộc` | `FR-WMS-05`, `FR-WMS-08` | **`BM-KHO-03`** (Phiếu Điều chuyển Liên chi nhánh 2 bước) & `REF-MKT-005` (Mục 6.2 — Giấy phép VC C06/PC07) |
-| **`UC-WMS-07`** | Kiểm kê Kho bằng Quét mã vạch (`Blind Count / Tally`), 3 Cột Phẩm chất & Phê duyệt Cân bằng kho 2 lớp | `WMS` | **`P1 MVP`** | `P0 - Bắt buộc` | `FR-WMS-06`, `NFR-QLCH-01` | **`BM-KHO-04`** (`Mẫu số 05-VT` — Biên bản Kiểm kê TT133/TT200) & `REF-MKT-005` (Mục 7.6 — Xác thực PIN/OTP) |
-| **`UC-WMS-08`** | Cảnh báo Tồn tối thiểu / Cận hạn / Trần `NEQ 80%` & Báo cáo Thẻ kho, `NXT`, Sổ Báo cáo Công an (`C06`) / Sở Công Thương | `WMS` | **`P1 MVP`** | `Cao` | `FR-WMS-06`, `FR-WMS-07`, `FR-WMS-09` | `REF-BIZ-003` (Tồn kho đa trạng thái) & `REF-MKT-005` (Mục 5.2 & 7.6 — Sổ theo dõi bất biến nộp `C06` & Sở CT) |
-| **`UC-WMS-09`** | Tác nghiệp Kho Ngoại tuyến (`Offline-first WMS`) tại Kho Cách ly / Chống nổ & Đồng bộ Hàng đợi Sự kiện | `WMS` | **`P1 MVP`** | `Cao` | `NFR-QLCH-02`, `NFR-QLCH-03` | `REF-BIZ-003` (Mục 5 — `IndexedDB` + `Sync Queue`) & `REF-MKT-005` (Kho cách ly xa khu dân cư, tường chắn sóng) |
-| **`UC-POS-01`** | Mở ca, Thu/Chi tại quầy, Kết ca Mù (`Blind Close`) & Bàn giao Két tiền Thu ngân | `POS` | `P2` | `Cao (P2)` | `BR-QLCH-02`, `FR-POS-01` | **`BM-POS-03`** (Biên bản Bàn giao Ca & Đối soát Két tiền) |
-| **`UC-POS-02`** | Bán hàng POS Tốc độ cao (`< 15s`), Tạm lưu đa đơn (`Hold Bill`), VietQR cục bộ & In bill `K80/K57` | `POS` | `P2` | `Cao (P2)` | `FR-POS-01`, `NFR-QLCH-01..03` | **`BM-POS-01`** (Hóa đơn POS `K80/K57`, VietQR động, chuẩn NĐ `70/2025/NĐ-CP`) |
-| **`UC-POS-03`** | Bán hàng Đặc thù: Bắt buộc Định danh `CCCD 12 số` & Khóa giá trần (Pháo hoa `Z121`) / Kiểm định mức Nổ mìn (`VLNCN`) | `POS` | `P2` | `Cao (P2)` | `FR-POS-02` | `REF-MKT-005` (Mục 4.1, 4.2 & 7.5 — Quy định bán lẻ Pháo hoa Z121 theo NĐ `137/2020` & B2B `VLNCN` theo Luật `42/2024`) |
-| **`UC-POS-04`** | Đổi / Trả hàng tại quầy POS theo Hóa đơn gốc & Phân loại Kho Hàng Trả / Kho Cách ly An toàn | `POS` | `P2` | `Cao (P2)` | `FR-POS-01`, `FR-POS-02` | **`BM-POS-02`** (Phiếu Đổi / Trả Hàng) & Quy tắc cách ly hàng lỗi/ẩm ướt (`QCVN 01:2019/BCT`) |
-| **`UC-TMS-01`** | Quản lý Đội xe Chuyên dụng Hàng Nguy hiểm Loại 1 (`Biển UN`, Kiểm định, PCCC) & Chứng chỉ Lái xe / Người áp tải | `TMS` | `P2` | `Cao (P2)` | `FR-TMS-01`, `FR-TMS-02` | `REF-MKT-005` (Mục 3 Nhóm IV-V & Mục 6.1 — Nghị định `34/2024/NĐ-CP` về phương tiện & nhân sự chở hàng nguy hiểm) |
-| **`UC-TMS-02`** | Lập Vận đơn, Gắn Giấy phép Vận chuyển (`C06/PC07`, hạn `<= 7 ngày`), Kiểm tra Ghép hàng & Điều phối Lộ trình 2D | `TMS` | `P2` | `Cao (P2)` | `FR-TMS-01`, `FR-TMS-02` | `REF-MKT-005` (Mục 6.2 & 7.4 — Giấy phép vận chuyển từng chuyến, tuyến đường/khung giờ chỉ định, cấm ghép Kíp nổ + Thuốc nổ) |
-| **`UC-TMS-03`** | Xác nhận Giao hàng (`POD`), Kiểm tra Niêm phong Kẹp chì, Đối soát `COD` 100% & Theo dõi Nộp trả Giấy phép Vận chuyển | `TMS` | `P2` | `Cao (P2)` | `FR-TMS-01`, `FR-TMS-02` | `REF-MKT-005` (Mục 6.2 — Hoàn trả Giấy phép vận chuyển cho Công an trong vòng `07 ngày` sau chuyến hàng) |
+| **`UC-ADM-01`** | Quản trị Tổ chức Chuỗi, Phân quyền `RBAC` 4 Phân hệ, Xác thực 2 lớp (`PIN/OTP`) & Nhật ký Audit | **1. Quản trị ứng dụng (`SYS-ADMIN`)** | **`P1 MVP`** | `P0 - Bắt buộc` | `BR-QLCH-01..02`, `FR-ADM-01` | `REF-BIZ-003` (Phân quyền đa chi nhánh) & `REF-MKT-005` (Mục 7.6 — Xác thực PIN/OTP 2 lớp) |
+| **`UC-WMS-02`** | Quản trị Danh mục Dùng chung (`Master Data: SKU`), Đa ĐVT (`Multi-UoM`), Lô/Serial/HSD, Giá trần & Thuộc tính Hàng Cháy nổ (`Mã UN`, `NEQ`) | **1. Quản trị ứng dụng (`SYS-ADMIN`)** *(Đồng bộ sang `WMS/POS/ECOM`)* | **`P1 MVP`** | `P0 - Bắt buộc` | `FR-ADM-02`, `FR-WMS-08`, `NFR-QLCH-01` | `REF-BIZ-003` (Mục 1) & `REF-MKT-005` (Mục 2 & 7.1 — Phân loại `VLNCN`, `Pháo hoa Z121`, `Mã UN`, `NEQ`) |
+| **`UC-WMS-03`** | Quản trị Hồ sơ 17 loại Giấy phép / GCN / Chứng chỉ (`ANTT`, `PCCC`, `VLNCN`, `Pháo`) & Cảnh báo Hết hạn (`30-60 ngày`) | **1. Quản trị ứng dụng (`SYS-ADMIN`)** | **`P1 MVP`** | `P0 - Bắt buộc` | `FR-ADM-03` | `REF-MKT-005` (Mục 3 — Ma trận 17 loại Giấy phép theo NĐ `96/2016`, NĐ `136/2020`, NĐ `137/2020`, Luật `42/2024`) |
+| **`UC-WMS-01`** | Thiết lập Đa kho (`Hub/Chi nhánh/Cách ly`), Sơ đồ kho 2D (`Zone/Rack/Bin`), Định mức `NEQ` & Quy tắc Phân khu Cách ly | **2. Quản lý kho bãi (`WMS`)** | **`P1 MVP`** | `P0 - Bắt buộc` | `BR-QLCH-01`, `FR-WMS-01`, `FR-WMS-02`, `FR-WMS-08` | `REF-BIZ-003` (Mục 2) & `REF-MKT-005` (`QCVN 01:2019/BCT` — Khoảng cách an toàn, Định mức `NEQ`, Phân khu cách ly) |
+| **`UC-WMS-04`** | Nhập kho (`Inbound`), Cất hàng (`Putaway`), Khóa chặn Trần `NEQ` (`Hard Lock`) & Chặn Xếp chung Hàng Kỵ nhau | **2. Quản lý kho bãi (`WMS`)** | **`P1 MVP`** | `P0 - Bắt buộc` | `FR-WMS-04`, `FR-WMS-08` | **`BM-KHO-01`** (`Mẫu số 01-VT` — TT133/TT200) & `REF-MKT-005` (Mục 5.2 & 7.2) |
+| **`UC-WMS-05`** | Xuất kho (`Outbound`), Soạn hàng `FEFO/FIFO` (`Picking`), Kiểm tra Giấy phép & Xuất hủy Hàng hỏng/Hết hạn | **2. Quản lý kho bãi (`WMS`)** | **`P1 MVP`** | `P0 - Bắt buộc` | `FR-WMS-04`, `FR-WMS-08` | **`BM-KHO-02`** (`Mẫu số 02-VT` — TT133/TT200) & `REF-MKT-005` |
+| **`UC-WMS-06`** | Điều chuyển Liên kho 2 bước (`In-Transit Stock Transfer`), Gắn Giấy phép Vận chuyển & Niêm phong Kẹp chì | **2. Quản lý kho bãi (`WMS`)** | **`P1 MVP`** | `P0 - Bắt buộc` | `FR-WMS-05`, `FR-WMS-08` | **`BM-KHO-03`** (Phiếu Điều chuyển 2 bước) & `REF-MKT-005` (Mục 6.2) |
+| **`UC-WMS-07`** | Kiểm kê Kho bằng Quét mã vạch (`Blind Count / Tally`), 3 Cột Phẩm chất & Phê duyệt Cân bằng kho 2 lớp | **2. Quản lý kho bãi (`WMS`)** | **`P1 MVP`** | `P0 - Bắt buộc` | `FR-WMS-06`, `NFR-QLCH-01` | **`BM-KHO-04`** (`Mẫu số 05-VT` — Biên bản Kiểm kê TT133/TT200) |
+| **`UC-WMS-08`** | Cảnh báo Tồn tối thiểu / Cận hạn / Trần `NEQ 80%` & Báo cáo Thẻ kho, `NXT`, Sổ Báo cáo Công an (`C06`) / Sở Công Thương | **2. Quản lý kho bãi (`WMS`)** | **`P1 MVP`** | `Cao` | `FR-WMS-06`, `FR-WMS-07`, `FR-ADM-03` | `REF-BIZ-003` & `REF-MKT-005` (Mục 5.2 & 7.6) |
+| **`UC-WMS-09`** | Tác nghiệp Kho Ngoại tuyến (`Offline-first WMS`) tại Kho Cách ly / Chống nổ & Đồng bộ Hàng đợi Sự kiện | **2. Quản lý kho bãi (`WMS`)** | **`P1 MVP`** | `Cao` | `NFR-QLCH-02`, `NFR-QLCH-03` | `REF-BIZ-003` (Mục 5 — `IndexedDB` + `Sync Queue`) & `REF-MKT-005` |
+| **`UC-STR-01`** | Quản lý Vận hành Điểm bán, Sơ đồ 2D Quầy/Kệ Cửa hàng, Giới hạn Trưng bày An toàn & Nhận hàng Bổ sung từ Kho | **3. Quản lý cửa hàng (`STORE & POS`)** | `P2` | `Cao (P2)` | `FR-STR-01`, `FR-WMS-05` | `REF-BIZ-003` & `REF-MKT-005` (Quy định trưng bày an toàn tại điểm bán Pháo hoa `Z121`) |
+| **`UC-POS-01`** | Mở ca, Thu/Chi tại quầy, Kết ca Mù (`Blind Close`) & Bàn giao Két tiền Thu ngân | **3. Quản lý cửa hàng (`STORE & POS`)** | `P2` | `Cao (P2)` | `BR-QLCH-02`, `FR-POS-01` | **`BM-POS-03`** (Biên bản Bàn giao Ca & Đối soát Két tiền) |
+| **`UC-POS-02`** | Bán hàng POS Tốc độ cao (`< 15s`), Tạm lưu đa đơn (`Hold Bill`), VietQR cục bộ & In bill `K80/K57` | **3. Quản lý cửa hàng (`STORE & POS`)** | `P2` | `Cao (P2)` | `FR-POS-01`, `NFR-QLCH-01..03` | **`BM-POS-01`** (Hóa đơn POS `K80/K57`, VietQR động, chuẩn NĐ `70/2025/NĐ-CP`) |
+| **`UC-POS-03`** | Bán hàng Đặc thù tại quầy: Bắt buộc Định danh `CCCD 12 số` & Khóa giá trần (Pháo hoa `Z121`) / Kiểm định mức (`VLNCN`) | **3. Quản lý cửa hàng (`STORE & POS`)** | `P2` | `Cao (P2)` | `FR-POS-02` | `REF-MKT-005` (Mục 4.1, 4.2 & 7.5 — NĐ `137/2020/NĐ-CP` & Luật `42/2024/QH15`) |
+| **`UC-POS-04`** | Đổi / Trả hàng tại quầy POS theo Hóa đơn gốc & Phân loại Kho Hàng Trả / Kho Cách ly An toàn | **3. Quản lý cửa hàng (`STORE & POS`)** | `P2` | `Cao (P2)` | `FR-POS-01`, `FR-POS-02` | **`BM-POS-02`** (Phiếu Đổi / Trả Hàng) & `QCVN 01:2019/BCT` |
+| **`UC-ECM-01`** | Cổng Trưng bày Trực tuyến (`Storefront B2C & Portal B2B`), Đồng bộ Tồn khả dụng (`Available`) & Bộ lọc Pháp lý Hàng đặc thù | **4. Cổng TMĐT Online (`ECOM`)** | `P2` | `Cao (P2)` | `FR-ECM-01` | `QLCH-D003` & `REF-MKT-005` (Ẩn hàng cấm dân sự `VLNCN` trên B2C, chỉ hiển thị cho B2B có giấy phép) |
+| **`UC-ECM-02`** | Giỏ hàng, Đặt hàng Online (`Click & Collect / Giao tận nơi`), Định danh `CCCD 12 số` mua Pháo `Z121` & Thanh toán `VietQR cục bộ / COD` | **4. Cổng TMĐT Online (`ECOM`)** | `P2` | `Cao (P2)` | `FR-ECM-02`, `NFR-QLCH-03` | `QLCH-D003`, **`BM-POS-01`** & Nghị định `137/2020/NĐ-CP` (Khóa giá trần & định danh người mua) |
+| **`UC-ECM-03`** | Xử lý Đơn hàng Online (`Omnichannel Order Fulfillment`): Giữ chỗ `Reserved` $\rightarrow$ Soạn hàng tại `WMS`/`Cửa hàng` $\rightarrow$ Bàn giao Giao vận | **4. Cổng TMĐT Online (`ECOM`)** | `P2` | `Cao (P2)` | `FR-ECM-03` | `QLCH-D003` & `REF-BIZ-003` (Đồng bộ tồn kho Đa kênh chống bán vượt tồn `Overselling`) |
+| **`UC-TMS-01`** | Quản lý Đội xe Chuyên dụng Hàng Nguy hiểm Loại 1 (`Biển UN`, Kiểm định, PCCC) & Chứng chỉ Lái xe / Người áp tải | **4. Cổng TMĐT Online & Giao vận (`ECOM-TMS`)** | `P2` | `Cao (P2)` | `FR-ECM-03` | `REF-MKT-005` (Mục 6.1 — Nghị định `34/2024/NĐ-CP`) |
+| **`UC-TMS-02`** | Lập Vận đơn, Gắn Giấy phép Vận chuyển (`C06/PC07`, hạn `<= 7 ngày`), Kiểm tra Ghép hàng & Điều phối Lộ trình 2D | **4. Cổng TMĐT Online & Giao vận (`ECOM-TMS`)** | `P2` | `Cao (P2)` | `FR-ECM-03` | `REF-MKT-005` (Mục 6.2 & 7.4 — Giấy phép vận chuyển từng chuyến) |
+| **`UC-TMS-03`** | Xác nhận Giao hàng (`POD`), Kiểm tra Niêm phong Kẹp chì, Đối soát `COD` 100% & Theo dõi Nộp trả Giấy phép Vận chuyển | **4. Cổng TMĐT Online & Giao vận (`ECOM-TMS`)** | `P2` | `Cao (P2)` | `FR-ECM-03` | `REF-MKT-005` (Mục 6.2 — Hoàn trả Giấy phép vận chuyển trong vòng `07 ngày`) |
 
 ---
+
 
 ## 3. Đặc tả Chi tiết 09 Use Cases Trọng tâm Giai đoạn 1 (`P1 MVP — Hệ thống Kho bãi WMS & Tuân thủ Hàng Đặc thù`)
 
@@ -286,9 +305,48 @@ flowchart TD
      - **Chặn ghép hàng kỵ nhau trên cùng 1 xe:** Tuyệt đối khóa chặn nếu điều phối viên gán cả `Kíp nổ` và `Thuốc nổ` lên cùng một phương tiện.
   3. Thiết lập **Tuyến đường & Khung giờ chỉ định** theo đúng Giấy phép vận chuyển trên **Bản đồ/Sơ đồ tuyến 2D cục bộ (`$0 First`)** (tránh giờ cao điểm nội đô, tránh hầm đường bộ/phà chở khách).
 
-### `UC-TMS-03`: Xác nhận Giao hàng (`POD`), Kiểm tra Niêm phong Kẹp chì, Đối soát `COD` 100% & Theo dõi Nộp trả Giấy phép Vận chuyển
-- **Truy vết:** `FR-TMS-01`, `FR-TMS-02`; `REF-MKT-005` (Mục 6.2).
+### `UC-ADM-01` (Phân hệ 1 — `SYS-ADMIN`): Quản trị Tổ chức Chuỗi, Phân quyền `RBAC` 4 Phân hệ & Xác thực 2 lớp (`PIN/OTP`)
+- **Truy vết:** `BR-QLCH-01..02`, `FR-ADM-01`; `QLCH-D003`.
 - **Luồng cốt lõi:**
-  1. Tại điểm nhận, tài xế/người áp tải và thủ kho nhận đối chiếu **Mã niêm phong kẹp chì (`Seal No`)**, quét mã xác nhận giao hàng (`POD`) và ghi nhận tiền thu hộ **`COD`** (nếu có).
+  1. Chủ chuỗi khởi tạo danh mục đơn vị trực thuộc (`Kho tổng Hub/DC`, `Kho chuyên dụng VLNCN/Pháo`, `Cửa hàng bán lẻ`, `Cổng TMĐT Online`) và tạo tài khoản nhân sự.
+  2. Phân quyền `RBAC` độc lập theo **4 Phân hệ (`SYS-ADMIN`, `WMS`, `STORE & POS`, `ECOM`)** và giới hạn phạm vi dữ liệu theo đúng Kho / Cửa hàng được giao.
+  3. Thiết lập **Mã PIN/TOTP xác thực 2 lớp cục bộ** cho các vai trò quản lý (`ACT-OWN`, `ACT-WM`) để ký duyệt các nghiệp vụ trọng yếu (xuất `VLNCN`, xuất tiêu hủy, duyệt cân bằng kiểm kê) và ghi nhật ký bất biến vào `system_audit_logs`.
+
+### `UC-STR-01` (Phân hệ 3 — `STORE & POS`): Quản lý Vận hành Điểm bán, Sơ đồ 2D Quầy/Kệ Cửa hàng, Giới hạn Trưng bày An toàn & Nhận hàng Bổ sung
+- **Truy vết:** `FR-STR-01`, `FR-WMS-05`; `QLCH-D003`.
+- **Luồng cốt lõi:**
+  1. Cửa hàng trưởng thiết lập **Sơ đồ 2D mặt bằng quầy/kệ trưng bày tại cửa hàng** (`Store 2D Display Map`) và cấu hình giới hạn tồn trưng bày an toàn tại cửa hàng (đặc biệt đối với điểm bán Pháo hoa `Z121` chỉ được trưng bày mẫu hoặc lưu giữ trong tủ/kho cửa hàng không vượt định mức `Max NEQ` cấp phép cho điểm bán).
+  2. Khi hàng tại cửa hàng chạm ngưỡng `Min Stock`, cửa hàng gửi yêu cầu bổ sung hàng (`Replenishment Request`) về Phân hệ Kho bãi (`WMS`) và quét mã vạch nhận hàng từ Phiếu điều chuyển liên kho (`BM-KHO-03`).
+
+### `UC-ECM-01` (Phân hệ 4 — `ECOM`): Cổng Trưng bày Trực tuyến (`Storefront B2C & Portal B2B`), Đồng bộ Tồn khả dụng (`Available`) & Bộ lọc Pháp lý Hàng đặc thù
+- **Truy vết:** `FR-ECM-01`; `QLCH-D003` & `REF-MKT-005`.
+- **Luồng cốt lõi:**
+  1. Cổng TMĐT Online đồng bộ thời gian thực danh mục sản phẩm `SKU`, hình ảnh, giá bán và **Tồn kho khả dụng (`Available = On-hand - Reserved`)** từ Phân hệ Kho bãi (`WMS`) và Cửa hàng (`STORE`).
+  2. **Bộ lọc Pháp lý Tự động (`E-Commerce Compliance Filter`):**
+     - **Khách lẻ dân sự (`B2C Storefront`):** Hiển thị Hàng tiêu dùng thông thường (`Loại 0`) và Pháo hoa tiêu dùng không tiếng nổ `Z121` (`Loại 2` — kèm nhãn cảnh báo điều kiện đủ $\ge 18$ tuổi & định danh `CCCD 12 số`); **tự động ẩn tuyệt đối** mọi mặt hàng Vật liệu nổ công nghiệp / Tiền chất thuốc nổ (`Loại 1A, 1B`).
+     - **Khách doanh nghiệp (`B2B Portal`):** Chỉ tài khoản doanh nghiệp đã được Phân hệ Quản trị (`SYS-ADMIN`) xác thực có `Giấy phép sử dụng VLNCN` còn hiệu lực mới nhìn thấy và đặt hàng được danh mục `Loại 1A, 1B` trong phạm vi hạn mức nổ mìn còn lại.
+
+### `UC-ECM-02` (Phân hệ 4 — `ECOM`): Giỏ hàng, Đặt hàng Online (`Click & Collect / Giao tận nơi`), Định danh `CCCD 12 số` mua Pháo `Z121` & Thanh toán `VietQR cục bộ / COD`
+- **Truy vết:** `FR-ECM-02`, `NFR-QLCH-03`; `QLCH-D003` & Nghị định `137/2020/NĐ-CP`.
+- **Luồng cốt lõi:**
+  1. Khách hàng chọn sản phẩm vào giỏ hàng Online và chọn phương thức nhận hàng: **`Nhận tại cửa hàng (Click & Collect)`** hoặc **`Giao tận nơi (Home/Site Delivery)`**.
+  2. **Kiểm tra Pháp lý Giỏ hàng Online:**
+     - Nếu giỏ hàng có **Pháo hoa `Z121`**: Hệ thống bắt buộc người mua nhập đầy đủ **`Họ và tên, Số CCCD (12 chữ số), Ngày sinh (>= 18 tuổi), Địa chỉ thường trú, Số điện thoại`**, khóa cứng đơn giá không vượt giá trần niêm yết (`regulated_ceiling_price`), và yêu cầu xuất trình CCCD gốc trùng khớp khi nhận hàng (`Click & Collect` tại cửa hàng Z121 hoặc khi nhận từ xe giao hàng).
+  3. **Thanh toán `$0 First` & Giữ chỗ Tồn kho (`Reserve Stock`):**
+     - Sinh mã **`VietQR` động bằng thư viện cục bộ (`Local Library-First`)** hoặc chọn thanh toán khi nhận hàng (`COD`).
+     - Ngay khi đặt đơn thành công, hệ thống tự động cộng số lượng đặt vào cột **`Tồn giữ chỗ (`reserved_qty`)`** tại kho/cửa hàng thực hiện đơn, trừ ngay `available_qty` để ngăn chặn tuyệt đối việc bán trùng (`Overselling`) giữa kênh Online và quầy `POS`.
+
+### `UC-ECM-03` (Phân hệ 4 — `ECOM`): Xử lý Đơn hàng Online (`Omnichannel Order Fulfillment`): Giữ chỗ `Reserved` $\rightarrow$ Soạn hàng tại `WMS`/`Cửa hàng` $\rightarrow$ Giao nhận
+- **Truy vết:** `FR-ECM-03`; `QLCH-D003`.
+- **Luồng cốt lõi:**
+  1. Đơn hàng từ Cổng TMĐT Online (`ECOM`) tự động định tuyến về **Phân hệ Quản lý Kho bãi (`WMS`)** (nếu giao từ kho) hoặc **Phân hệ Quản lý Cửa hàng (`STORE & POS`)** (nếu khách chọn `Click & Collect` hoặc giao nhanh từ cửa hàng gần nhất).
+  2. Nhân viên kho/cửa hàng nhận lệnh `Picking & Packing` trên thiết bị cầm tay, quét mã vạch `Bin` + `SKU/Lô` theo nguyên tắc `FEFO/FIFO` và in Phiếu xuất/Hóa đơn kèm thông tin định danh người mua.
+  3. Nếu khách nhận tại quầy (`Click & Collect`), Thu ngân tại Phân hệ 3 đối chiếu CCCD gốc của khách và bấm `Hoàn tất bàn giao`. Nếu giao tận nơi, đơn hàng chuyển sang luồng Vận đơn (`UC-TMS-02` & `UC-TMS-03`) để theo dõi giao hàng (`POD`) và đối soát tiền `COD` 100%.
+
+### `UC-TMS-03` (Phân hệ 4 — `ECOM & TMS`): Xác nhận Giao hàng (`POD`), Kiểm tra Niêm phong Kẹp chì, Đối soát `COD` 100% & Theo dõi Nộp trả Giấy phép Vận chuyển
+- **Truy vết:** `FR-ECM-03`; `REF-MKT-005` (Mục 6.2).
+- **Luồng cốt lõi:**
+  1. Tại điểm nhận, tài xế/người áp tải và thủ kho nhận (hoặc khách hàng) đối chiếu **Mã niêm phong kẹp chì (`Seal No` / CCCD người nhận)**, quét mã xác nhận giao hàng (`POD`) và ghi nhận tiền thu hộ **`COD`** (nếu có).
   2. Cuối chuyến, hệ thống thực hiện **Đối soát `COD` & Hàng hoàn 100%**.
   3. **Theo dõi nghĩa vụ nộp trả Giấy phép vận chuyển Pháo hoa:** Ngay khi chuyến xe chuyển sang trạng thái `Giao hàng thành công`, hệ thống bật bộ đếm ngược **$07\text{ ngày}$** nhắc bộ phận Pháp chế/Điều phối nộp trả bản gốc Giấy phép vận chuyển về cơ quan Công an (`C06`) đã cấp và cập nhật trạng thái `Đã hoàn trả giấy phép (Permit Returned)`.
+

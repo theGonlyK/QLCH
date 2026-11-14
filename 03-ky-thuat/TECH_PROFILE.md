@@ -5,13 +5,16 @@
 
 ---
 
-## 1. Phân loại Kỹ thuật Đã Xác nhận (`QLCH-D002`)
+## 1. Phân loại Kỹ thuật & Kiến trúc 04 Phân hệ Tách biệt (`QLCH-D002` & `QLCH-D003`)
 
-- **Loại hình hệ thống:** Hệ thống Quản lý Hợp nhất **Kho bãi (`WMS` - P1 MVP) $\rightarrow$ Bán lẻ (`POS` - P2) & Vận chuyển (`TMS` - P2)** cho Đa ngành hàng tiêu dùng/bán lẻ và **Hàng đặc thù (Chất gây cháy nổ, Vật liệu nổ công nghiệp `VLNCN`, Pháo hoa `Z121`)**.
-- **Mô hình tổ chức & dữ liệu:** **`Single-owner Multi-branch & Multi-warehouse`** (1 chủ sở hữu quản lý toàn chuỗi nhiều Kho tổng `Hub/DC`, Kho chuyên dụng `VLNCN/Pháo`, Kho cách ly `Quarantine` và Cửa hàng chi nhánh).
-- **Client & Trải nghiệm:** **Web App tốc độ cao (PWA Responsive)** cho PC quản trị/kho, Tablet/Máy POS và Mobile Web tác nghiệp tại kệ kho, **kết hợp Sơ đồ trực quan 2D (`2D Interactive Warehouse Layout: Zone -> Rack -> Bin`)**.
+- **Kiến trúc 04 Phân hệ Tách biệt (`4-Portal Modular Architecture` — `QLCH-D003`):**
+  Hệ thống được tách biệt rõ ràng thành **4 ứng dụng/cổng giao diện chuyên biệt** (trong một Monorepo dùng chung `@qlch/core-db` và `@qlch/domain-rules`), đảm bảo mỗi nhóm nhân sự/khách hàng chỉ làm việc trên đúng phân hệ của mình:
+  1. **Phân hệ 1 — Quản trị Ứng dụng (`@qlch/admin-portal` — `SYS-ADMIN`):** Cổng quản trị trung tâm dành cho Chủ chuỗi, Quản trị viên & Pháp chế (Cơ cấu tổ chức, Phân quyền `RBAC` 4 phân hệ + Xác thực 2 lớp `PIN/OTP`, Danh mục dùng chung `SKU/Đa ĐVT/Giá trần`, Hồ sơ 17 loại Giấy phép Pháp lý `ANTT/PCCC/VLNCN/Pháo` & Nhật ký Audit).
+  2. **Phân hệ 2 — Quản lý Kho bãi (`@qlch/wms-portal` — `WMS`):** Cổng vận hành Kho tổng (`Hub/DC`), Kho chuyên dụng (`VLNCN/Pháo`) & Kho cách ly (`Quarantine`) kết hợp **Sơ đồ 2D mặt bằng kho (`Zone -> Rack -> Bin`)**, kiểm soát trần `NEQ` & cách ly hàng kỵ nhau, Nhập/Xuất/Điều chuyển 2 bước `In-Transit`/Kiểm kê mù, Thẻ kho bất biến và chế độ **`Offline-first`** cho máy quét mã vạch trong kho sâu.
+  3. **Phân hệ 3 — Quản lý Cửa hàng (`@qlch/store-pos-portal` — `STORE & POS`):** Cổng vận hành điểm bán vật lý gồm Sơ đồ 2D quầy/kệ trưng bày cửa hàng, nhận hàng điều chuyển từ kho, Mở/Kết ca mù, Bán hàng tại quầy `POS < 15s`, định danh `CCCD 12 số` khi bán Pháo hoa `Z121`, bàn giao đơn `Click & Collect` và Đổi/Trả hàng.
+  4. **Phân hệ 4 — Cổng Thương mại Điện tử Online (`@qlch/ecom-portal` — `ECOM & TMS`):** Cổng trưng bày sản phẩm & đặt hàng trực tuyến (`Storefront B2C` & `Portal đặt hàng B2B`) đồng bộ thời gian thực với **Tồn kho khả dụng (`Available Inventory`)**, tích hợp bộ lọc pháp lý hàng đặc thù (ẩn `VLNCN` trên B2C, bắt buộc định danh `CCCD 12 số >= 18 tuổi` + khóa giá trần với Pháo `Z121`), thanh toán `VietQR cục bộ / COD`, và luồng xử lý đơn hàng Online (`Order Fulfillment` đẩy xuống `WMS`/`Cửa hàng` & điều phối đội xe `TMS`).
+- **Mô hình tổ chức & dữ liệu:** **`Single-owner Multi-branch & Multi-warehouse`** (1 chủ sở hữu quản lý toàn chuỗi nhiều Kho bãi, Cửa hàng chi nhánh và Cổng TMĐT Online).
 - **Thiết bị ngoại vi hỗ trợ:** Máy quét mã vạch/QR cầm tay (`USB/Bluetooth HID Keyboard Emulation` & Camera thiết bị di động) và Máy in nhiệt (`Thermal Printer` khổ `K80/K57` & tem mã vạch `SKU/Bin`).
-- **Chế độ vận hành mạng:** **`Offline-first`** — Nhân viên kho tác nghiệp `Putaway`, `Picking`, `Kiểm kê mù (Blind Count)` trong buồng kho chống nổ/góc khuất mất sóng (`UC-WMS-09`), lưu trên `IndexedDB` và tự động đồng bộ qua `offline_sync_queue`.
 - **Ràng buộc hạ tầng & chi phí (`NFR-QLCH-03`):** **`$0 First`** và **`100% Thư viện cục bộ (Local Library-First)`** — Tuyệt đối không kết nối dịch vụ API bên thứ 3 trả phí khi chưa có phê duyệt của Chủ dự án trong `01-quan-ly/DECISIONS.md`.
 
 ---
